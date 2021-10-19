@@ -147,7 +147,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
     {
 	case WM_TIMER:
 		if (_pMainGame)
-			_pMainGame->Update();
+			_pMainGame->Update_Old();
 		InvalidateRect(_hWnd, NULL, false);
 		break;
 
@@ -174,7 +174,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             HDC hdc = BeginPaint(hWnd, &ps);
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
 			if (_pMainGame)
-				_pMainGame->Render(hdc);
+				_pMainGame->Render_Old(hdc);
 			//
 			
             EndPaint(hWnd, &ps);

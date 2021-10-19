@@ -14,13 +14,16 @@
 #include <memory.h>
 #include <tchar.h>
 
+#define _USE_MATH_DEFINES
+#define EIGEN_DONT_VECTORIZE
+#define EIGEN_DISABLE_UNALIGNED_ARRAY_ASSERT
 #include <vector>
 #include <math.h>
 #include "Eigen/Eigen"
+#include "EigenDX.h"
 
 using namespace std;
 using namespace Eigen;
 
-#define _USE_MATH_DEFINES
 extern HWND _hWnd;
 #define PI M_PI
