@@ -18,6 +18,11 @@
 #define EIGEN_DONT_VECTORIZE
 #define EIGEN_DISABLE_UNALIGNED_ARRAY_ASSERT
 #include <vector>
+#include <list>
+#include <string>
+#include <map>
+#include <set>
+#include <assert.h>
 #include <math.h>
 
 #include <d3dx9.h>
@@ -44,5 +49,12 @@ extern HWND g_hWnd;
 			static class_name instance; \
 			return &instance; \
 		}
+
+struct ST_PC_VERTEX
+{
+	D3DXVECTOR3		p;
+	D3DCOLOR		c;
+	enum { FVF = D3DFVF_XYZ | D3DFVF_DIFFUSE };
+};
 
 #include "cDeviceManager.h"
