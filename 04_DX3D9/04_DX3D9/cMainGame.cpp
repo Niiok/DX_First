@@ -1,26 +1,33 @@
 #include "framework.h"
 #include "cMainGame.h"
 #include "cDeviceManager.h"
+#include "cCubePC.h"
+#include "cCamera.h"
 
 cMainGame::cMainGame()
 {
+	m_pCubePC = new cCubePC;
+	m_pCamera = new cCamera;
 }
 
 cMainGame::~cMainGame()
 {
+	SAFE_DELETE(m_pCubePC);
 	g_pDeviceManager->Destroy();
 }
 
 void cMainGame::Setup()
 {
-	Setup_Line();
-	Setup_Triangle();
+	//Setup_Line();
+	//Setup_Triangle();
+		m_pCubePC->Setup();
+		m_pCamera->Setup(&m_pCubePC->GetPosition());
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
 }
 
 void cMainGame::Update()
 {
-	RECT rc;
+	/*RECT rc;
 	GetClientRect(g_hWnd, &rc);
 
 	D3DXVECTOR3 m_vEye = D3DXVECTOR3(0, 0, -5.0f);
@@ -34,7 +41,12 @@ void cMainGame::Update()
 	D3DXMATRIXA16 matProj;
 	D3DXMatrixPerspectiveFovLH(&matProj, D3DX_PI / 4.0f,
 		rc.right / (float)rc.bottom, 1.0f, 1000.0f);
-	g_pD3DDevice->SetTransform(D3DTS_PROJECTION, &matProj);
+	g_pD3DDevice->SetTransform(D3DTS_PROJECTION, &matProj);*/
+
+	if (m_pCubePC)
+		m_pCubePC->Update();
+	if (m_pCamera)
+		m_pCamera->Update();
 }
 
 void cMainGame::Render()
@@ -44,12 +56,20 @@ void cMainGame::Render()
 
 	g_pD3DDevice->BeginScene();
 	// <<
-	Draw_Line();
-	Draw_Triangle();
+	//Draw_Line();
+	//Draw_Triangle();
+	if (m_pCubePC)
+		m_pCubePC->Render();
 	// >>
 	g_pD3DDevice->EndScene();
 
 	g_pD3DDevice->Present(NULL, NULL, NULL, NULL);
+}
+
+void cMainGame::WndProc(HWND hWNd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+	if (m_pCamera)
+		m_pCamera->WndProc(hWNd, message, wParam, lParam);
 }
 
 void cMainGame::Setup_Line()

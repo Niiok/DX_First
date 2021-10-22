@@ -155,16 +155,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="04_DX3D9.h" />
+    <ClInclude Include="cCamera.h" />
+    <ClInclude Include="cCubePC.h" />
     <ClInclude Include="cDeviceManager.h" />
+    <ClInclude Include="cGrid.h" />
     <ClInclude Include="cMainGame.h" />
+    <ClInclude Include="cPyramid.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="04_DX3D9.cpp" />
+    <ClCompile Include="cCamera.cpp" />
+    <ClCompile Include="cCubePC.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
+    <ClCompile Include="cGrid.cpp" />
     <ClCompile Include="cMainGame.cpp" />
+    <ClCompile Include="cPyramid.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="04_DX3D9.rc" />

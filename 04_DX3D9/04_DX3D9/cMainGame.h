@@ -10,11 +10,15 @@ public :
 private:
 	std::vector<ST_PC_VERTEX>	m_vecLineVertex;
 	std::vector<ST_PC_VERTEX>	m_vecTriangleVertex;
+	class cCubePC* m_pCubePC;
+	class cCamera* m_pCamera;
 
 public:
 	void Setup();
 	void Update();
 	void Render();
+
+	void WndProc(HWND hWNd, UINT message, WPARAM wParam, LPARAM lParam);
 
 	void Setup_Line();
 	void Draw_Line();

@@ -39,6 +39,7 @@ extern HWND g_hWnd;
 #define PI M_PI
 
 #define SAFE_RELEASE(p) {if(p) p->Release(); p = NULL;}
+#define SAFE_DELETE(p) {if(p) delete p; p = NULL;}
 #define SINGLETONE(class_name) \
 	private: \
 		class_name(void); \
