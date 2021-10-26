@@ -1,9 +1,9 @@
 #pragma once
-class cPyramid
+class cGizmo
 {
 public:
-	cPyramid();
-	~cPyramid();
+	cGizmo();
+	~cGizmo();
 
 private:
 	std::vector<ST_PC_VERTEX>		m_vecVertex;

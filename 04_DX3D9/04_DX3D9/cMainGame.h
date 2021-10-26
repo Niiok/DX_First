@@ -12,6 +12,7 @@ private:
 	std::vector<ST_PC_VERTEX>	m_vecTriangleVertex;
 	class cCubePC* m_pCubePC;
 	class cCamera* m_pCamera;
+	//class cGrid* m_pGrid;
 
 public:
 	void Setup();
