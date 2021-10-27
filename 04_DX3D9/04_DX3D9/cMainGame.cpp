@@ -4,12 +4,14 @@
 #include "cCubePC.h"
 #include "cCamera.h"
 #include "cGrid.h"
+#include "cCubeMan.h"
 
 cMainGame::cMainGame()
 {
-	m_pCubePC = new cCubePC;
+	//m_pCubePC = new cCubePC;
 	m_pCamera = new cCamera;
 	//m_pGrid = new cGrid;
+	m_pCubeMan = new cCubeMan;
 }
 
 cMainGame::~cMainGame()
@@ -17,6 +19,7 @@ cMainGame::~cMainGame()
 	//SAFE_DELETE(m_pGrid);
 	SAFE_DELETE(m_pCubePC);
 	SAFE_DELETE(m_pCamera);
+	SAFE_DELETE(m_pCubeMan);
 	g_pDeviceManager->Destroy();
 }
 
@@ -24,9 +27,12 @@ void cMainGame::Setup()
 {
 	//Setup_Line();
 	//Setup_Triangle();
-		m_pCubePC->Setup();
-		m_pCamera->Setup(&m_pCubePC->GetPosition());
-		//m_pGrid->Setup();
+	//m_pCubePC->Setup();
+	m_pCubeMan->Setup();
+	m_pCamera->Setup(&m_pCubeMan->GetPosition());
+	//m_pCamera->Setup(&m_pCubePC->GetPosition());
+	//m_pGrid->Setup();
+
 	g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, false);
 }
 
@@ -48,10 +54,12 @@ void cMainGame::Update()
 		rc.right / (float)rc.bottom, 1.0f, 1000.0f);
 	g_pD3DDevice->SetTransform(D3DTS_PROJECTION, &matProj);*/
 
-	if (m_pCubePC)
-		m_pCubePC->Update();
+	//if (m_pCubePC)
+		//m_pCubePC->Update();
 	if (m_pCamera)
 		m_pCamera->Update();
+	if (m_pCubeMan)
+		m_pCubeMan->Update();
 }
 
 void cMainGame::Render()
@@ -65,8 +73,10 @@ void cMainGame::Render()
 	//Draw_Triangle();
 	/*if (m_pGrid)
 		m_pGrid->Render();*/
-	if (m_pCubePC)
-		m_pCubePC->Render();
+	//if (m_pCubePC)
+		//m_pCubePC->Render();
+	if (m_pCubeMan)
+		m_pCubeMan->Render();
 	// >>
 	g_pD3DDevice->EndScene();
 

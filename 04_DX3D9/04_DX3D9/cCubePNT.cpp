@@ -9,7 +9,7 @@ cCubePNT::~cCubePNT()
 {
 }
 
-void cCubePNT::SetUp()
+void cCubePNT::Setup()
 {
 	std::vector<ST_PNT_VERTEX>vecVertex;
 	vecVertex.resize(8);

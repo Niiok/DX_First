@@ -1,5 +1,6 @@
 #pragma once
 #include "cCubePNT.h"
+
 class cCubeNode :
 	public cCubePNT
 {
@@ -14,8 +15,8 @@ protected:
 	D3DXMATRIXA16 m_matWorldTM;
 	std::vector<cCubeNode*> m_vecChild;
 
-	Synthesize(D3DXMATRIXA16*, m_pParentWorldTM, ParentWorldTM);
-	Synthesize(float, m_fRotDeltaX, RotDeltaX);
+	Synthesize(D3DXMATRIXA16*, m_pParentWorldTM, ParentWorldTM)
+	Synthesize(float, m_fRotDeltaX, RotDeltaX)
 
 public:
 	virtual void AddChild(cCubeNode* pChild);

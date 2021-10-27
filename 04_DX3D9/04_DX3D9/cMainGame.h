@@ -13,6 +13,7 @@ private:
 	class cCubePC* m_pCubePC;
 	class cCamera* m_pCamera;
 	//class cGrid* m_pGrid;
+	class cCubeMan* m_pCubeMan;
 
 public:
 	void Setup();
