@@ -15,10 +15,17 @@ private:
 	//class cGrid* m_pGrid;
 	class cCubeMan* m_pCubeMan;
 
+	LPDIRECT3DTEXTURE9 m_pTexture;
+	std::vector<ST_PT_VERTEX> m_vecVertex;
+
 public:
 	void Setup();
 	void Update();
 	void Render();
+
+	void Set_Light();
+	void Set_Texture();
+	void Draw_Texture();
 
 	void WndProc(HWND hWNd, UINT message, WPARAM wParam, LPARAM lParam);
 

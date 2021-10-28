@@ -4,7 +4,8 @@
 cCubeNode::cCubeNode()
 	: m_fRotDeltaX(0.0f)
 	, m_pParentWorldTM(NULL)
-	, m_vLocalPos(0,0,0)
+	, m_vLocalPos(0, 0, 0)
+	, m_fRotX(0.0f)
 {
 	D3DXMatrixIdentity(&m_matLocalTM);
 	D3DXMatrixIdentity(&m_matWorldTM);
@@ -38,10 +39,23 @@ void cCubeNode::Update()
 {
 	cCubePNT::Update();
 
+	m_fRotX += m_fRotDeltaX;
+	if (m_fRotX > D3DX_PI / 6.0f)
+	{
+		m_fRotX = D3DX_PI / 6.0f;
+		m_fRotDeltaX *= -1;
+	}
+	if (m_fRotX < -D3DX_PI / 6.0f)
+	{
+		m_fRotX = -D3DX_PI / 6.0f;
+		m_fRotDeltaX *= -1;
+	}
+
 	D3DXMATRIXA16 matR, matT;
 	D3DXMatrixIdentity(&matR);
 	D3DXMatrixIdentity(&matT);
 
+	D3DXMatrixRotationX(&matR, m_fRotX);
 	D3DXMatrixTranslation(&matT, m_vLocalPos.x, m_vLocalPos.y, m_vLocalPos.z);
 	m_matLocalTM = matR * matT;
 

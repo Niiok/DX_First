@@ -80,7 +80,7 @@ void cCamera::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 			float delta_y = (float)pt_cur_mouse.y - m_ptPrevMouse.y;
 
 			m_vCameraRotAngle.y += (delta_x / 100.0f);
-			m_vCameraRotAngle.x += (delta_y / 100.0f);
+			m_vCameraRotAngle.x -= (delta_y / 100.0f);
 
 			if (m_vCameraRotAngle.x < -D3DX_PI / 2.0f + 0.0001f)
 				m_vCameraRotAngle.x = -D3DX_PI / 2.0f + 0.0001f;

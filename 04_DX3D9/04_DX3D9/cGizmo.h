@@ -8,9 +8,10 @@ public:
 private:
 	std::vector<ST_PC_VERTEX>		m_vecVertex;
 	D3DXMATRIXA16					m_matR;
+	D3DMATERIAL9					m_stMt1;
 
 public:
-	void Setup(D3DCOLOR c, D3DXMATRIXA16& mat);
+	void Setup(D3DXCOLOR c, D3DXMATRIXA16& mat);
 	void Render();
 };
 

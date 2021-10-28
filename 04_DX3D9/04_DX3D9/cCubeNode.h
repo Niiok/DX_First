@@ -15,8 +15,9 @@ protected:
 	D3DXMATRIXA16 m_matWorldTM;
 	std::vector<cCubeNode*> m_vecChild;
 
-	Synthesize(D3DXMATRIXA16*, m_pParentWorldTM, ParentWorldTM)
-	Synthesize(float, m_fRotDeltaX, RotDeltaX)
+	Synthesize(D3DXMATRIXA16*, m_pParentWorldTM, ParentWorldTM);
+	Synthesize(float, m_fRotDeltaX, RotDeltaX);
+	Synthesize(float, m_fRotX, RotX);
 
 public:
 	virtual void AddChild(cCubeNode* pChild);

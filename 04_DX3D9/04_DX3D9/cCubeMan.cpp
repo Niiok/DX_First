@@ -24,34 +24,53 @@ void cCubeMan::Setup()
 {
 	cCharacter::Setup();
 
+	ZeroMemory(&m_stMt1, sizeof(D3DMATERIAL9));
+	m_stMt1.Ambient	 = D3DXCOLOR(0.7f, 0.7f, 0.7f, 1.0f);
+	m_stMt1.Diffuse	 = D3DXCOLOR(0.7f, 0.7f, 0.7f, 1.0f);
+	m_stMt1.Specular = D3DXCOLOR(0.7f, 0.7f, 0.7f, 1.0f);
+
 	cBody* pBody = new cBody;
 	pBody->Setup();
+	pBody->SetParentWorldTM(&m_matWorld);
 	m_pRoot = pBody;
 	
 	cHead* pHead = new cHead;
 	pHead->Setup();
 	m_pRoot->AddChild(pHead);
 
-	cLeftArm* pLeftArm = new cLeftArm;
-	pLeftArm->Setup();
-	m_pRoot->AddChild(pLeftArm);
+	m_leftArm = new cLeftArm;
+	m_leftArm->Setup();
+	m_leftArm->SetRotDeltaX(0.1f);
+	m_pRoot->AddChild(m_leftArm);
 
-	cRightArm* pRightArm = new cRightArm;
-	pRightArm->Setup();
-	m_pRoot->AddChild(pRightArm);
+	m_rightArm = new cRightArm;
+	m_rightArm->Setup();
+	m_rightArm->SetRotDeltaX(-0.1f);
+	m_pRoot->AddChild(m_rightArm);
 
-	cLeftLeg* pLeftLeg = new cLeftLeg;
-	pLeftLeg->Setup();
-	m_pRoot->AddChild(pLeftLeg);
+	m_leftLeg = new cLeftLeg;
+	m_leftLeg->Setup();
+	m_leftLeg->SetRotDeltaX(-0.1f);
+	m_pRoot->AddChild(m_leftLeg);
 
-	cRightLeg* pRightLeg = new cRightLeg;
-	pRightLeg->Setup();
-	m_pRoot->AddChild(pRightLeg);
+	m_rightLeg = new cRightLeg;
+	m_rightLeg->Setup();
+	m_rightLeg->SetRotDeltaX(0.1f);
+	m_pRoot->AddChild(m_rightLeg);
 }
 
 void cCubeMan::Update()
 {
 	cCharacter::Update();
+
+	if (m_vVelocity == D3DXVECTOR3(0, 0, 0))
+	{
+		m_leftArm->SetRotX(-m_leftArm->GetRotDeltaX());
+		m_rightArm->SetRotX(-m_rightArm->GetRotDeltaX());
+		m_leftLeg->SetRotX(-m_leftLeg->GetRotDeltaX());
+		m_rightLeg->SetRotX(-m_rightLeg->GetRotDeltaX());
+	}
+
 	if (m_pRoot)
 		m_pRoot->Update();
 }
@@ -60,13 +79,14 @@ void cCubeMan::Render()
 {
 	if (g_pD3DDevice)
 	{
-		//g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, true);
+		g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, true);
+		g_pD3DDevice->SetMaterial(&m_stMt1);
 
 		cCharacter::Render();
 
-		D3DXMATRIXA16 matWorld;
-		D3DXMatrixIdentity(&matWorld);
-		g_pD3DDevice->SetTransform(D3DTS_WORLD, &matWorld);
+		//D3DXMATRIXA16 matWorld;
+		//D3DXMatrixIdentity(&matWorld);
+		g_pD3DDevice->SetTransform(D3DTS_WORLD, &m_matWorld);
 
 			if (m_pRoot)
 				m_pRoot->Render();

@@ -19,21 +19,30 @@ void cCharacter::Setup()
 
 void cCharacter::Update()
 {
+	m_vVelocity = D3DXVECTOR3(0, 0, 0);
+
 	if (GetKeyState('A') & 0x8000)
 		m_fRotY -= 0.1f;
 	if (GetKeyState('D') & 0x8000)
 		m_fRotY += 0.1f;
 
 	if (GetKeyState('W') & 0x8000)
+	{
 		m_vPosition += m_vDirection * 0.1f;
+		m_vVelocity += m_vDirection * 0.1f;
+	}
 	if (GetKeyState('S') & 0x8000)
+	{
 		m_vPosition -= m_vDirection * 0.1f;
+		m_vVelocity -= m_vDirection * 0.1f;
+	}
 
 	D3DXMATRIXA16 matR, matT;
 	D3DXMatrixRotationY(&matR, m_fRotY);
 	m_vDirection = D3DXVECTOR3(0, 0, 1);
 	D3DXVec3TransformNormal(&m_vDirection, &m_vDirection, &matR);
 	D3DXMatrixTranslation(&matT, m_vPosition.x, m_vPosition.y, m_vPosition.z);
+	D3DXMatrixIdentity(&m_matWorld);
 	m_matWorld = matR * matT;
 }
 
