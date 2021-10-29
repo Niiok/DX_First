@@ -14,6 +14,14 @@ void cCubePNT::Setup()
 	std::vector<ST_PNT_VERTEX>vecVertex;
 	vecVertex.resize(8);
 
+	//
+	//      5 ---- 6
+	//  1 --+- 2   |
+	//  |   |  |   |
+	//  |   4 -+-- 7
+	//  0 ---- 3
+	//
+
 	vecVertex[0].p.x = -0.5f; vecVertex[0].p.y = -0.5f; vecVertex[0].p.z = -0.5f;
 	vecVertex[1].p.x = -0.5f; vecVertex[1].p.y =  0.5f; vecVertex[1].p.z = -0.5f;
 	vecVertex[2].p.x =  0.5f; vecVertex[2].p.y =  0.5f; vecVertex[2].p.z = -0.5f;

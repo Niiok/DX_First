@@ -11,6 +11,7 @@
 
 cCubeMan::cCubeMan()
 	: m_pRoot(NULL)
+	, m_pTexture(NULL)
 {
 }
 
@@ -18,11 +19,15 @@ cCubeMan::~cCubeMan()
 {
 	if (m_pRoot)
 		m_pRoot->Destroy();
+
+	SAFE_RELEASE(m_pTexture);
 }
 
 void cCubeMan::Setup()
 {
 	cCharacter::Setup();
+
+	D3DXCreateTextureFromFile(g_pD3DDevice, L"steve.png", &m_pTexture);
 
 	ZeroMemory(&m_stMt1, sizeof(D3DMATERIAL9));
 	m_stMt1.Ambient	 = D3DXCOLOR(0.7f, 0.7f, 0.7f, 1.0f);
@@ -82,13 +87,16 @@ void cCubeMan::Render()
 		g_pD3DDevice->SetRenderState(D3DRS_LIGHTING, true);
 		g_pD3DDevice->SetMaterial(&m_stMt1);
 
+		g_pD3DDevice->SetTexture(0, m_pTexture);
 		cCharacter::Render();
 
 		//D3DXMATRIXA16 matWorld;
 		//D3DXMatrixIdentity(&matWorld);
 		g_pD3DDevice->SetTransform(D3DTS_WORLD, &m_matWorld);
 
-			if (m_pRoot)
-				m_pRoot->Render();
+		if (m_pRoot)
+			m_pRoot->Render();
+
+		g_pD3DDevice->SetTexture(0, NULL);
 	}
 }

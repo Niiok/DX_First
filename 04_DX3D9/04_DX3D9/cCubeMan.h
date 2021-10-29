@@ -10,6 +10,7 @@ public:
 protected:
 	class cCubeNode* m_pRoot;
 	D3DMATERIAL9	 m_stMt1;
+	LPDIRECT3DTEXTURE9	m_pTexture;
 
 	cCubeNode* m_leftArm;
 	cCubeNode* m_rightArm;

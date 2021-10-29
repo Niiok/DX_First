@@ -20,7 +20,7 @@ cMainGame::~cMainGame()
 	SAFE_DELETE(m_pCubePC);
 	SAFE_DELETE(m_pCamera);
 	SAFE_DELETE(m_pCubeMan);
-	//SAFE_RELEASE(m_)
+	SAFE_RELEASE(m_pTexture);
 	g_pDeviceManager->Destroy();
 }
 
