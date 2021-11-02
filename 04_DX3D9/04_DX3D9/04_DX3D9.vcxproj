@@ -77,6 +77,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DH);$(IncludePath)</IncludePath>
+    <LibraryPath>$(DL);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -164,13 +166,19 @@
     <ClInclude Include="cCubePNT.h" />
     <ClInclude Include="cDeviceManager.h" />
     <ClInclude Include="cGrid.h" />
+    <ClInclude Include="cGroup.h" />
     <ClInclude Include="cHead.h" />
     <ClInclude Include="cLeftArm.h" />
     <ClInclude Include="cLeftLeg.h" />
     <ClInclude Include="cMainGame.h" />
     <ClInclude Include="cGizmo.h" />
+    <ClInclude Include="cMtlTex.h" />
+    <ClInclude Include="cObject.h" />
+    <ClInclude Include="cObjectManager.h" />
+    <ClInclude Include="cObjLoader.h" />
     <ClInclude Include="cRightArm.h" />
     <ClInclude Include="cRightLeg.h" />
+    <ClInclude Include="cTextureManager.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -186,13 +194,19 @@
     <ClCompile Include="cCubePNT.cpp" />
     <ClCompile Include="cDeviceManager.cpp" />
     <ClCompile Include="cGrid.cpp" />
+    <ClCompile Include="cGroup.cpp" />
     <ClCompile Include="cHead.cpp" />
     <ClCompile Include="cLeftArm.cpp" />
     <ClCompile Include="cLeftLeg.cpp" />
     <ClCompile Include="cMainGame.cpp" />
     <ClCompile Include="cGizmo.cpp" />
+    <ClCompile Include="cMtlTex.cpp" />
+    <ClCompile Include="cObject.cpp" />
+    <ClCompile Include="cObjectManager.cpp" />
+    <ClCompile Include="cObjLoader.cpp" />
     <ClCompile Include="cRightArm.cpp" />
     <ClCompile Include="cRightLeg.cpp" />
+    <ClCompile Include="cTextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="04_DX3D9.rc" />

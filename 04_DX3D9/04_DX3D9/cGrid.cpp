@@ -10,7 +10,7 @@
 //{
 //	for(auto p : m_vecGizmo)
 //	{
-//		SAFE_DELETE(p);
+//		Safe_Delete(p);
 //	}
 //	m_vec
 //}

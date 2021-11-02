@@ -14,6 +14,7 @@ private:
 	class cCamera* m_pCamera;
 	//class cGrid* m_pGrid;
 	class cCubeMan* m_pCubeMan;
+	std::vector<class cGroup*> m_vecGroup;
 
 	LPDIRECT3DTEXTURE9 m_pTexture;
 	std::vector<ST_PT_VERTEX> m_vecVertex;
@@ -27,6 +28,9 @@ public:
 	void Set_Texture();
 	void Draw_Texture();
 
+	void Setup_Obj();
+	void Draw_Obj();
+
 	void WndProc(HWND hWNd, UINT message, WPARAM wParam, LPARAM lParam);
 
 	void Setup_Line();
@@ -34,5 +38,6 @@ public:
 
 	void Setup_Triangle();
 	void Draw_Triangle();
+
 };
 

@@ -20,7 +20,7 @@ cCubeMan::~cCubeMan()
 	if (m_pRoot)
 		m_pRoot->Destroy();
 
-	SAFE_RELEASE(m_pTexture);
+	Safe_Release(m_pTexture);
 }
 
 void cCubeMan::Setup()

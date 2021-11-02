@@ -29,18 +29,18 @@
 #pragma comment(lib, "d3d9.lib")
 #pragma comment(lib, "d3dx9.lib")
 
-#include "Eigen/Eigen"
-#include "EigenDX.h"
+//#include "Eigen/Eigen"
+//#include "EigenDX.h"
 
 using namespace std;
-using namespace Eigen;
+//using namespace Eigen;
 
 extern HWND g_hWnd;
 #define PI M_PI
 
-#define SAFE_RELEASE(p) {if(p) p->Release(); p = NULL;}
-#define SAFE_DELETE(p) {if(p) delete p; p = NULL;}
-#define SINGLETONE(class_name) \
+#define Safe_Release(p) {if(p) p->Release(); p = NULL;}
+#define Safe_Delete(p) {if(p) delete p; p = NULL;}
+#define Singletone(class_name) \
 	private: \
 		class_name(void); \
 		~class_name(void); \
@@ -60,6 +60,20 @@ public : inline void Set##funName(varType var) {varName = var;}
 protected : varType varName;\
 public : inline varType& Get##funName(void) {return varName;}\
 public : inline void Set##funName(varType var) {varName = var;}
+
+#define Safe_Add_Ref(p) {if(p) p->AddRef();}
+
+#define Synthesize_Add_Ref(varType, varName, funName)\
+protected: varType varName;\
+	public: inline varType Get##funName(void) const {return varName;}\
+	public: inline void Set##funName(varType var) { \
+			if(varName != var) {\
+			Safe_Add_Ref(var);\
+			Safe_Release(varName);\
+			varName = var;\
+			}\
+	}
+
 
 struct ST_PC_VERTEX
 {
@@ -85,3 +99,7 @@ struct ST_PNT_VERTEX
 
 
 #include "cDeviceManager.h"
+
+#include "cObject.h"
+#include "cObjectManager.h"
+#include "cTextureManager.h"
