@@ -103,3 +103,4 @@ struct ST_PNT_VERTEX
 #include "cObject.h"
 #include "cObjectManager.h"
 #include "cTextureManager.h"
+#include "iMap.h"

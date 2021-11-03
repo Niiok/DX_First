@@ -169,3 +169,94 @@ void cObjLoader::LoadMtlLib(const char * szFolder, const char * szFile)
 		}
 	}
 }
+
+void cObjLoader::LoadSurface(OUT std::vector<D3DXVECTOR3>& vecSurface, IN const char * szFolder, IN const char * szFile, D3DXMATRIXA16 * pmat)
+{
+	vector<D3DXVECTOR3> vecV;
+	vector<D3DXVECTOR2> vecVT;
+	vector<D3DXVECTOR3> vecVN;
+	vector<ST_PNT_VERTEX> vecVertex;
+
+	string sFullPath(szFolder);
+	sFullPath += (string("/") + string(szFile));
+
+	FILE* fp;
+	fopen_s(&fp, sFullPath.c_str(), "r");
+
+	string sMtlName;
+
+	while (true)
+	{
+		if (feof(fp))break;
+
+		char szTemp[1024];
+		fgets(szTemp, 1024, fp);
+		if (szTemp[0] == '#')
+			continue;
+		else if (szTemp[0] == 'm')
+		{
+			char szMtlFile[1024];
+			sscanf_s(szTemp, "%*s %s", szMtlFile, 1024);
+			LoadMtlLib(szFolder, szMtlFile);
+		}
+		else if (szTemp[0] = 'g')
+		{
+			if (!vecVertex.empty())
+			{
+				cGroup* pGroup = new cGroup;
+				pGroup->SetVertex(vecVertex);
+				pGroup->SetMtlTex(m_mapMtlTex[sMtlName]);
+				vecGroup.push_back(pGroup);
+				vecVertex.clear();
+			}
+		}
+		else if (szTemp[0] == 'v')
+		{
+			if (szTemp[1] == ' ')
+			{
+				float x, y, z;
+				sscanf_s(szTemp, "%*s %f %f %f", &x, &y, &z);
+				vecV.push_back(D3DXVECTOR3(x, y, z));
+			}
+			else if (szTemp[1] == 't')
+			{
+				float u, v;
+				sscanf_s(szTemp, "%*s %f %f %*f", &u, &v);
+				vecVT.push_back(D3DXVECTOR2(u, v));
+			}
+			else if (szTemp[1] == 'n')
+			{
+				float x, y, z;
+				sscanf_s(szTemp, "%*s %f %f %f", &x, &y, &z);
+				vecVN.push_back(D3DXVECTOR3(x, y, z));
+			}
+		}
+		else if (szTemp[0] == 'u')
+		{
+			char szMtlName[1024];
+			sscanf_s(szTemp, "%*s %s", szMtlName, 1024);
+			sMtlName = string(szMtlName);
+		}
+		else if (szTemp[0] == 'f')
+		{
+			int nIndex[3];
+			sscanf_s(szTemp, "%*s %d/%*d/%*d %d/%*d/%*d %d/%*d/%*d",
+				&nIndex[0], &nIndex[1], &nIndex[2]);
+
+			for (int i = 0; i < 3; ++i)
+			{
+				vecSurface.push_back(vecV[nIndex[i] - 1]);
+			}
+		}
+	}
+
+	fclose(fp);
+
+	if (pmat)
+	{
+		for (size_t i = 0; i < vecSurface.size(); +i + )
+		{
+			D3D
+		}
+	}
+}

@@ -19,7 +19,7 @@ protected:
 
 public:
 	virtual void Setup() override;
-	virtual void Update() override;
+	virtual void Update(iMap* pMap) override;
 	virtual void Render() override;
 
 

@@ -19,6 +19,9 @@
     <Filter Include="Obj">
       <UniqueIdentifier>{78b76ba9-f4d5-45dd-8936-d271a425a2e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{c00057df-7b34-4db4-b643-45fab0afa493}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -99,6 +102,12 @@
     <ClInclude Include="cTextureManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="iMap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="cObjMap.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="04_DX3D9.cpp">
@@ -168,6 +177,12 @@
       <Filter>Obj</Filter>
     </ClCompile>
     <ClCompile Include="cTextureManager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="iMap.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="cObjMap.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

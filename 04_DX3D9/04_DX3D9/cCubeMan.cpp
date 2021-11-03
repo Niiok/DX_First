@@ -64,9 +64,9 @@ void cCubeMan::Setup()
 	m_pRoot->AddChild(m_rightLeg);
 }
 
-void cCubeMan::Update()
+void cCubeMan::Update(iMap* pMap)
 {
-	cCharacter::Update();
+	cCharacter::Update(pMap);
 
 	if (m_vVelocity == D3DXVECTOR3(0, 0, 0))
 	{

@@ -1,4 +1,7 @@
 #pragma once
+
+class iMap;
+
 class cCharacter
 {
 public :
@@ -12,10 +15,11 @@ protected:
 	D3DXMATRIXA16	m_matWorld;
 	
 	D3DXVECTOR3		m_vVelocity;
+	iMap* m_pMap;
 
 public:
 	virtual void Setup();
-	virtual void Update();
+	virtual void Update(iMap* map);
 	virtual void Render();
 	virtual D3DXVECTOR3 GetPosition();
 };
