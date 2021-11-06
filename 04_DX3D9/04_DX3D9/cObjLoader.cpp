@@ -254,9 +254,13 @@ void cObjLoader::LoadSurface(OUT std::vector<D3DXVECTOR3>& vecSurface, IN const 
 
 	if (pmat)
 	{
-		for (size_t i = 0; i < vecSurface.size(); +i + )
+		for (size_t i = 0; i < vecSurface.size(); ++i)
 		{
-			D3D
+			D3DXVec3TransformCoord(
+				&vecSurface[i],
+				&vecSurface[i],
+				pmat
+			);
 		}
 	}
 }

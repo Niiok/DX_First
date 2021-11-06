@@ -1,22 +1,23 @@
 #include "stdafx.h"
 #include "Main.h"
+#include "Systems/Window.h"
 
 
 
 void Main::Initialize()
 {
-	for (IExecute* exe : executes)
+	/*for (IExecute* exe : executes)
 	{
 		exe->Initialize();
-	}
+	}*/
 }
 
 void Main::Ready()
 {
-	for (IExecute* exe : executes)
+	/*for (IExecute* exe : executes)
 	{
 		exe->Ready();
-	}
+	}*/
 }
 
 void Main::Destroy()
