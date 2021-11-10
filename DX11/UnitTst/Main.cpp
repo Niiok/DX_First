@@ -1,15 +1,12 @@
 #include "stdafx.h"
 #include "Main.h"
 #include "Systems/Window.h"
-
+#include "DrawVertex.h"
 
 
 void Main::Initialize()
 {
-	/*for (IExecute* exe : executes)
-	{
-		exe->Initialize();
-	}*/
+	Push(new DrawVertex);
 }
 
 void Main::Ready()
@@ -72,4 +69,26 @@ void Main::ResizeScreen()
 void Main::Push(IExecute * execute)
 {
 	executes.push_back(execute);
+}
+
+
+int WINAPI WinMain(HINSTANCE instance, HINSTANCE prevInstance, LPSTR param, int command)
+{
+	D3DDesc desc;
+	desc.AppName = L"D3D Game";
+	desc.Instance = instance;
+	desc.bFullScreen = false;
+	desc.bVsync = false;
+	desc.Handle = NULL;
+	desc.Width = 1280;
+	desc.Height = 720;
+	desc.Background = D3DXCOLOR(0.3f, 0.3f, 0.3f, 1);
+	D3D::SetDesc(desc);
+
+	Main* main = new Main();
+	WPARAM wParam = Window::Run(main);
+
+	SafeDelete(main);
+
+	return wParam;
 }

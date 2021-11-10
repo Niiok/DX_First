@@ -1,10 +1,11 @@
 #pragma once
 
-#include "Systems/IExecute.h"
+#include "Systems//IExecute.h"
 
-class Main : public IExecute
+class DrawVertex : public IExecute
 {
 public:
+		// IExecute을(를) 통해 상속됨
 	virtual void Initialize() override;
 	virtual void Ready() override;
 	virtual void Destroy() override;
@@ -14,11 +15,11 @@ public:
 	virtual void PostRender() override;
 	virtual void ResizeScreen() override;
 
-
 private:
-	void Push(IExecute* execute);
+	Shader* shader;
 
-private:
-	vector<IExecute*> executes;
-	
+	Vertex vertices[2];
+	ID3D11Buffer* vertexBuffer;
+
 };
+
