@@ -26,6 +26,6 @@ technique11 T0
 	pass P0
 	{
 		SetVertexShader(CompileShader(vs_5_0, VS()));
-		SetPixelShader(CompileShader(vs_5_0, PS()));
+		SetPixelShader(CompileShader(ps_5_0, PS()));
 	}
 };
