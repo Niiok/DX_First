@@ -9,6 +9,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTst", "UnitTst\UnitTst.
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest\UnitTest.vcxproj", "{E63572F6-069A-41C7-AE6F-F6D63D7EBEBE}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shaders", "_Shaders", "{3D0AC9CD-4614-4C05-83DD-62799F182D09}"
+	ProjectSection(SolutionItems) = preProject
+		..\_Shaders\001_Vertex.fx = ..\_Shaders\001_Vertex.fx
+		..\_Shaders\002_Rect.fx = ..\_Shaders\002_Rect.fx
+		..\_Shaders\003_World.fx = ..\_Shaders\003_World.fx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64

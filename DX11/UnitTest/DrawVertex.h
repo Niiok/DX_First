@@ -18,8 +18,11 @@ public:
 private:
 	Shader* shader;
 
-	Vertex vertices[2];
+	Vertex vertices[4];
 	ID3D11Buffer* vertexBuffer;
 
+	Color color;
+
+	UINT number;
 };
 
