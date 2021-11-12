@@ -18,8 +18,17 @@ public:
 private:
 	Shader* shader;
 
-	Vertex vertices[4];
+	UINT width = 400;
+	UINT height = 400;
+
+	UINT vertexCount;
+	UINT indexCount;
+
+	Vertex* vertices;
+	UINT* indices;
+
 	ID3D11Buffer* vertexBuffer;
+	ID3D11Buffer* indexBuffer;
 
 	Color color;
 

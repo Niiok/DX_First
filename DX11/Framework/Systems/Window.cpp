@@ -193,6 +193,7 @@ void Window::MainRender()
 	D3D::Get()->SetRenderTarget();
 	D3D::Get()->Clear(desc.Background);
 	{
+		Context::Get()->Render();
 		mainExecute->Render();
 		mainExecute->PostRender();
 		Gui::Get()->Render();

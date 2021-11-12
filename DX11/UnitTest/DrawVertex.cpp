@@ -3,25 +3,72 @@
 
 void DrawVertex::Initialize()
 {
-	shader = new Shader(L"003_World.fx");
+	shader = new Shader(L"004_Quad.fx");
 
-	vertices[0].Position = Vector3(0.0f, 0.0f, 0.0f);
-	vertices[1].Position = Vector3(0.0f, 0.5f, 0.0f);
 
-	vertices[2].Position = Vector3(0.5f, 0.0f, 0.0f);
-	vertices[3].Position = Vector3(0.5f, 0.5f, 0.0f);
+	// vertex
+	vertexCount = (width + 1) * (height + 1);
+	vertices = new Vertex[vertexCount];
 
-	D3D11_BUFFER_DESC desc;
-	ZeroMemory(&desc, sizeof(D3D11_BUFFER_DESC));
-	desc.Usage = D3D11_USAGE_DEFAULT;
-	desc.ByteWidth = sizeof(Vertex) * 4;
-	desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
+	for (UINT z = 0; z <= height; z++)
+	{
+		for (UINT x = 0; x <= width; x++)
+		{
+			UINT index = (width + 1)*z + x;
+			vertices[index].Position.x = (float)x;
+			vertices[index].Position.y = 0.0f;
+			vertices[index].Position.z = (float)z;
+		}
+	}
 
-	D3D11_SUBRESOURCE_DATA subResource = { 0 };
-	subResource.pSysMem = vertices;
+	{
+		D3D11_BUFFER_DESC desc;
+		ZeroMemory(&desc, sizeof(D3D11_BUFFER_DESC));
+		desc.Usage = D3D11_USAGE_DEFAULT;
+		desc.ByteWidth = sizeof(Vertex) * vertexCount;
+		desc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 
-	Check(D3D::GetDevice()->CreateBuffer(&desc, &subResource, &vertexBuffer));
-	color = Color(0, 0, 0, 1);
+		D3D11_SUBRESOURCE_DATA subResource = { 0 };
+		subResource.pSysMem = vertices;
+
+		Check(D3D::GetDevice()->CreateBuffer(&desc, &subResource, &vertexBuffer));
+		color = Color(0, 0, 0, 1);
+	}
+
+
+	// index
+	indexCount = width * height * 6;
+	indices = new UINT[indexCount];
+
+	UINT index = 0;
+	for (UINT z = 0; z < height; z++)
+	{
+		for (UINT x = 0; x < width; x++)
+		{
+			indices[index + 0] = (width + 1)* (z + 0) + x + 0;
+			indices[index + 1] = (width + 1)* (z + 1) + x + 0;
+			indices[index + 2] = (width + 1)* (z + 0) + x + 1;
+
+			indices[index + 3] = (width + 1)* (z + 0) + x + 1;
+			indices[index + 4] = (width + 1)* (z + 1) + x + 0;
+			indices[index + 5] = (width + 1)* (z + 1) + x + 1;
+
+			index += 6;
+		}
+	}
+
+	{
+		D3D11_BUFFER_DESC desc;
+		ZeroMemory(&desc, sizeof(D3D11_BUFFER_DESC));
+		desc.Usage = D3D11_USAGE_DEFAULT;
+		desc.ByteWidth = sizeof(UINT) * indexCount;
+		desc.BindFlags = D3D11_BIND_INDEX_BUFFER;
+
+		D3D11_SUBRESOURCE_DATA subResource = { 0 };
+		subResource.pSysMem = indices;
+
+		Check(D3D::GetDevice()->CreateBuffer(&desc, &subResource, &indexBuffer));
+	}
 }
 
 void DrawVertex::Ready()
@@ -32,6 +79,7 @@ void DrawVertex::Destroy()
 {
 	SafeDelete(shader);
 	SafeRelease(vertexBuffer);
+	SafeRelease(indexBuffer);
 }
 
 void DrawVertex::Update()
@@ -41,12 +89,12 @@ void DrawVertex::Update()
 
 	/*ImGui::InputInt("Number", (int*)&number);
 	number %= 4;
-	
+
 	if (Keyboard::Get()->Press(VK_LEFT))
 		vertices[number].Position.x -= 2.0f * Time::Delta();
 	else if(Keyboard::Get()->Press(VK_RIGHT))
 		vertices[number].Position.x += 2.0f * Time::Delta();
-	
+
 	if (Keyboard::Get()->Press(VK_UP))
 		vertices[number].Position.y += 2.0f * Time::Delta();
 	else if(Keyboard::Get()->Press(VK_DOWN))
@@ -56,7 +104,8 @@ void DrawVertex::Update()
 
 	Matrix world;
 	D3DXMatrixIdentity(&world);
-	{
+	D3DXMatrixScaling(&world, 2, 2, 1);
+	/*{
 		static Vector3 position(0, 0, 0);
 
 		if (Keyboard::Get()->Press(VK_LEFT))
@@ -70,7 +119,7 @@ void DrawVertex::Update()
 			vertices[number].Position.y -= 1.0f * Time::Delta();
 
 		D3DXMatrixTranslation(&world, position.x, position.y, 0);
-	}
+	}*/
 	shader->AsMatrix("World")->SetMatrix(world);
 
 	Matrix view = Context::Get()->View();
@@ -90,13 +139,22 @@ void DrawVertex::Render()
 	UINT offset = 0;
 
 	D3D::GetDC()->IASetVertexBuffers(0, 1, &vertexBuffer, &stride, &offset);
-	D3D::GetDC()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP);
+	D3D::GetDC()->IASetIndexBuffer(indexBuffer, DXGI_FORMAT_R32_UINT, 0);
+	D3D::GetDC()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	shader->Draw(0, 0, 4);
+	static bool bWireframe = false;
+	ImGui::Checkbox("Wirefreme", &bWireframe);
 
-	{
+	/*if (bWireframe)
+		shader->Draw(0, 0, 6);
+	else
+		shader->Draw(0, 1, 6);*/
+
+	shader->DrawIndexed(0, (bWireframe ? 1 : 0), indexCount);
+
+	/*{
 		static Vector3 position(1, 0, 0);
-	
+
 
 		Matrix world;
 		D3DXMatrixTranslation(&world, position.x, position.y, position.z);
@@ -109,7 +167,7 @@ void DrawVertex::Render()
 	}
 	{
 		static Vector3 position(-1, 0, 0);
-	
+
 
 		Matrix world2;
 		D3DXMatrixTranslation(&world2, position.x, position.y, position.z);
@@ -119,7 +177,7 @@ void DrawVertex::Render()
 		shader->AsVector("Color")->SetFloatVector(color);
 		shader->AsMatrix("World")->SetMatrix(world2);
 		shader->Draw(0, 0, 4);
-	}
+	}*/
 
 	//ImGui::Text("FPS : %f", 0.1f);
 }
