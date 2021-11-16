@@ -1,8 +1,11 @@
 #include "stdafx.h"
 #include "DrawVertex.h"
+#include "Viewer/FreeCam.h"
 
 void DrawVertex::Initialize()
 {
+	((FreeCam*)Context::Get()->GetCamera())->Speed(40, 2);
+
 	shader = new Shader(L"004_Quad.fx");
 
 
@@ -87,8 +90,21 @@ void DrawVertex::Update()
 	ImGui::ColorEdit3("Color", (float*)&color);
 	shader->AsVector("Color")->SetFloatVector(color);
 
-	/*ImGui::InputInt("Number", (int*)&number);
-	number %= 4;
+	Vector3 camRot;
+	Context::Get()->GetCamera()->Rotation(&camRot);
+	ImGui::InputFloat3("CamRot", (float*)&camRot);
+	ImGui::DragFloat3("CamRot Drag", (float*)&camRot);
+	Context::Get()->GetCamera()->Rotation(camRot);
+
+	Vector3 camPos;
+	Context::Get()->GetCamera()->Position(&camPos);
+	ImGui::InputFloat3("CamPos", (float*)&camPos);
+	ImGui::DragFloat3("CamPos Drag", (float*)&camPos);
+	Context::Get()->GetCamera()->Position(camPos);
+	
+	
+	ImGui::InputInt("Number", (int*)&number);
+	number %=vertexCount;
 
 	if (Keyboard::Get()->Press(VK_LEFT))
 		vertices[number].Position.x -= 2.0f * Time::Delta();
@@ -100,7 +116,7 @@ void DrawVertex::Update()
 	else if(Keyboard::Get()->Press(VK_DOWN))
 		vertices[number].Position.y -= 2.0f * Time::Delta();
 
-	D3D::GetDC()->UpdateSubresource(vertexBuffer, 0, NULL, vertices, sizeof(Vertex) * 4, 0);*/
+	D3D::GetDC()->UpdateSubresource(vertexBuffer, 0, NULL, vertices, sizeof(Vertex) * 4, 0);
 
 	Matrix world;
 	D3DXMatrixIdentity(&world);
@@ -150,7 +166,7 @@ void DrawVertex::Render()
 	else
 		shader->Draw(0, 1, 6);*/
 
-	shader->DrawIndexed(0, (bWireframe ? 1 : 0), indexCount);
+	shader->DrawIndexed(0, (bWireframe ? 0 : 1), indexCount);
 
 	/*{
 		static Vector3 position(1, 0, 0);

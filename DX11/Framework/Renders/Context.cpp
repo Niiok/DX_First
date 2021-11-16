@@ -2,6 +2,7 @@
 #include "Context.h"
 #include "Viewer/Viewport.h"
 #include "Viewer/Perspective.h"
+#include "Viewer/FreeCam.h"
 
 Context* Context::instance = NULL;
 
@@ -30,38 +31,46 @@ Context::Context()
 
 	perspective = new Perspective(desc.Width, desc.Height);
 	viewport = new Viewport(desc.Width, desc.Height);
-
+	camera = new FreeCam();
 
 	//position = D3DXVECTOR3(29.5f, 16.5f, -50.0f);
-	position = D3DXVECTOR3(0, 4, -10);
+	/*position = D3DXVECTOR3(0, 4, -10);
 	D3DXVECTOR3 forward(0, 0, 1);
 	D3DXVECTOR3 right(1, 0, 0);
-	D3DXVECTOR3 up(0, 1, 0);
+	D3DXVECTOR3 up(0, 1, 0);*/
 
-	D3DXMatrixLookAtLH(&view, &position, &(position + forward), &up);
+	//D3DXMatrixLookAtLH(&view, &position, &(position + forward), &up);
 }
 
 Context::~Context()
 {
 	SafeDelete(perspective);
 	SafeDelete(viewport);
+	SafeDelete(camera);
 }
 
 void Context::Update()
 {
-	
+	camera->Update();
 }
 
 void Context::Render()
 {
-	ImGui::SliderFloat3("Camera", (float*)&position, -100, 100);
+	/*ImGui::SliderFloat3("Camera", (float*)&position, -100, 100);
 	D3DXVECTOR3 forward(0, 0, 1);
 	D3DXVECTOR3 right(1, 0, 0);
 	D3DXVECTOR3 up(0, 1, 0);
 	
-	D3DXMatrixLookAtLH(&view, &position, &(position + forward), &up);
+	D3DXMatrixLookAtLH(&view, &position, &(position + forward), &up);*/
 
 	viewport->RSSetViewport();
+}
+
+D3DXMATRIX Context::View()
+{
+	Matrix view;
+	camera->GetMatrix(&view);
+	return view;
 }
 
 D3DXMATRIX Context::Projection()

@@ -68,6 +68,7 @@ typedef D3DXQUATERNION Quaternion;
 #include "Viewer/Projection.h"
 #include "Viewer/Perspective.h"
 #include "Viewer/Orthographic.h"
+#include "Viewer/Camera.h"
 
 #include "Renders/Shader.h"
 #include "Renders/Texture.h"

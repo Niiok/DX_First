@@ -76,6 +76,10 @@
     <ClInclude Include="Viewer\Viewport.h">
       <Filter>Viewer</Filter>
     </ClInclude>
+    <ClInclude Include="Viewer\Camera.h">
+      <Filter>Viewer</Filter>
+    </ClInclude>
+    <ClInclude Include="Viewer\FreeCam.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renders\Context.cpp">
@@ -132,5 +136,9 @@
     <ClCompile Include="Viewer\Viewport.cpp">
       <Filter>Viewer</Filter>
     </ClCompile>
+    <ClCompile Include="Viewer\Camera.cpp">
+      <Filter>Viewer</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\FreeCam.cpp" />
   </ItemGroup>
 </Project>
