@@ -4,7 +4,7 @@
 
 void DrawVertex::Initialize()
 {
-	((FreeCam*)Context::Get()->GetCamera())->Speed(40, 2);
+	((FreeCam*)Context::Get()->GetCamera())->Speed(40, 0.5f);
 
 	shader = new Shader(L"004_Quad.fx");
 

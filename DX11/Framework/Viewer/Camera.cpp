@@ -92,7 +92,7 @@ void Camera::Rotation()
 	Matrix X, Y, Z;
 	D3DXMatrixRotationX(&X, rotation.x);
 	D3DXMatrixRotationY(&Y, rotation.y);
-	D3DXMatrixRotationZ(&X, rotation.z);
+	D3DXMatrixRotationZ(&Z, rotation.z);
 	//D3DXMatrixRotationYawPitchRoll();
 
 	matRotation = X * Y * Z;

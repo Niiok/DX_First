@@ -13,17 +13,6 @@ FreeCam::~FreeCam()
 
 void FreeCam::Update()
 {
-	if (Mouse::Get()->Press(1) == false)
-		return;
-
-	Vector3 R; 
-	Rotation(&R);
-	Vector3 val = Mouse::Get()->GetMoveValue();
-	R.x += val.y * rotation * Time::Delta();
-	R.y += val.x * rotation * Time::Delta();
-	R.z = 0.0f;
-	Rotation(R);
-
 	const Vector3& f = Forward();
 	const Vector3& r = Right();
 	const Vector3& u = Up();
@@ -47,6 +36,21 @@ void FreeCam::Update()
 		position -= u * move *Time::Delta();
 
 	Position(position);
+
+
+
+
+	if (Mouse::Get()->Press(1) == false)
+		return;
+
+	Vector3 R; 
+	Rotation(&R);
+	Vector3 val = Mouse::Get()->GetMoveValue();
+	R.x += val.y * rotation * Time::Delta();
+	R.y += val.x * rotation * Time::Delta();
+	R.z = 0.0f;
+	Rotation(R);
+
 }
 
 void FreeCam::Speed(float move, float rotation)

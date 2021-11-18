@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.1622
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Framework", "Framework\Framework.vcxproj", "{278261E1-7C9E-4D1F-A0C1-28D2E686B8AE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTst", "UnitTst\UnitTst.vcxproj", "{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnitTest", "UnitTest\UnitTest.vcxproj", "{E63572F6-069A-41C7-AE6F-F6D63D7EBEBE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shaders", "_Shaders", "{3D0AC9CD-4614-4C05-83DD-62799F182D09}"
@@ -15,6 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_Shaders", "_Shaders", "{3D
 		..\_Shaders\002_Rect.fx = ..\_Shaders\002_Rect.fx
 		..\_Shaders\003_World.fx = ..\_Shaders\003_World.fx
 		..\_Shaders\004_Quad.fx = ..\_Shaders\004_Quad.fx
+		..\_Shaders\005_Texture.fx = ..\_Shaders\005_Texture.fx
 	EndProjectSection
 EndProject
 Global
@@ -33,14 +32,6 @@ Global
 		{278261E1-7C9E-4D1F-A0C1-28D2E686B8AE}.Release|x64.Build.0 = Release|x64
 		{278261E1-7C9E-4D1F-A0C1-28D2E686B8AE}.Release|x86.ActiveCfg = Release|Win32
 		{278261E1-7C9E-4D1F-A0C1-28D2E686B8AE}.Release|x86.Build.0 = Release|Win32
-		{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}.Debug|x64.ActiveCfg = Debug|x64
-		{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}.Debug|x64.Build.0 = Debug|x64
-		{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}.Debug|x86.ActiveCfg = Debug|Win32
-		{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}.Debug|x86.Build.0 = Debug|Win32
-		{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}.Release|x64.ActiveCfg = Release|x64
-		{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}.Release|x64.Build.0 = Release|x64
-		{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}.Release|x86.ActiveCfg = Release|Win32
-		{AA22403D-98DF-4BBF-B759-EDEFAA5829BF}.Release|x86.Build.0 = Release|Win32
 		{E63572F6-069A-41C7-AE6F-F6D63D7EBEBE}.Debug|x64.ActiveCfg = Debug|x64
 		{E63572F6-069A-41C7-AE6F-F6D63D7EBEBE}.Debug|x64.Build.0 = Debug|x64
 		{E63572F6-069A-41C7-AE6F-F6D63D7EBEBE}.Debug|x86.ActiveCfg = Debug|Win32
