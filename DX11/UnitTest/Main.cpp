@@ -3,11 +3,12 @@
 #include "Systems/Window.h"
 #include "DrawVertex.h"
 #include "DrawTexture.h"
+#include "DrawTexture2.h"
 
 
 void Main::Initialize()
 {
-	Push(new DrawTexture());
+	Push(new DrawTexture2());
 }
 
 void Main::Ready()

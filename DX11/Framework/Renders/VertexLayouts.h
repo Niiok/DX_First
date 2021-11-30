@@ -19,6 +19,13 @@ struct VertexNormal
 		: Position(0, 0, 0)
 		, Normal(0, 0, 0) {}
 
+	VertexNormal(float x, float y, float z,
+		float nx, float ny, float nz)
+	{
+		Position = D3DXVECTOR3(x, y, z);
+		Normal = D3DXVECTOR3(nx, ny, nz);
+	}
+
 	D3DXVECTOR3	Position;
 	D3DXVECTOR3 Normal;
 };

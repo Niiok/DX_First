@@ -2,8 +2,9 @@
 #include "cObjMap.h"
 #include "cObjLoader.h"
 
-cObjMap::cObjMap(IN char * szFlder, IN char * szFile, IN D3DXMATRIXA16 * pmat)
+cObjMap::cObjMap(IN char * szFolder, IN char * szFile, IN D3DXMATRIXA16 * pmat)
 {
+	Load(szFolder, szFile, pmat);
 }
 
 cObjMap::~cObjMap(void)

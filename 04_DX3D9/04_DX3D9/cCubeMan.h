@@ -1,5 +1,6 @@
 #pragma once
 #include "cCharacter.h"
+
 class cCubeMan :
 	public cCharacter
 {

@@ -19,12 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DrawMesh.cpp" />
     <ClCompile Include="DrawTexture.cpp" />
+    <ClCompile Include="DrawTexture2.cpp" />
     <ClCompile Include="DrawVertex.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DrawMesh.h" />
     <ClInclude Include="DrawTexture.h" />
+    <ClInclude Include="DrawTexture2.h" />
     <ClInclude Include="DrawVertex.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="stdafx.h" />
