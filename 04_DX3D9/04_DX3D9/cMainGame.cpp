@@ -10,12 +10,13 @@
 #include "cObjMap.h"
 
 cMainGame::cMainGame()
+	: m_pCubePC(NULL)
+	, m_pCamera(NULL)
+	//, m_pGrid(NULL)
+	, m_pCubeMan(NULL)
+	, m_pTexture(NULL)
+	, m_pMap(NULL)
 {
-	//m_pCubePC = new cCubePC;
-	m_pCamera = new cCamera;
-	//m_pGrid = new cGrid;
-	m_pCubeMan = new cCubeMan;
-	m_pMap = NULL;
 }
 
 cMainGame::~cMainGame()
@@ -45,6 +46,11 @@ cMainGame::~cMainGame()
 
 void cMainGame::Setup()
 {
+	//m_pCubePC = new cCubePC;
+	m_pCamera = new cCamera;
+	//m_pGrid = new cGrid;
+	m_pCubeMan = new cCubeMan;
+	m_pMap = NULL;
 	//Setup_Line();
 	//Setup_Triangle();
 	//m_pCubePC->Setup();

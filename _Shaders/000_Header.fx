@@ -13,7 +13,7 @@ cbuffer CB_World
     matrix World;
 };
 
-float3 LightDirection;
+//float3 LightDirection;
 
 Texture2D DiffuseMap;
 Texture2D SpeculatMap;
@@ -21,6 +21,13 @@ Texture2D NormalMap;
 
 
 SamplerState Sampler;
+
+SamplerState LinearSampler
+{
+    Filter = MIN_MAG_MIP_LINEAR;
+    AddressU = WRAP;
+    AddressV = WRAP;
+};
 
 struct Vertex
 {
@@ -112,8 +119,11 @@ float4 WorldPosition(float4 position)
 
 float4 ViewProjection(float4 position)
 {
-    position = mul(position, View);
-    return mul(position, Projection);
+    //position = mul(position, View);
+    //return mul(position, Projection);
+    
+    return mul(position, VP);
+
 }
 
 
