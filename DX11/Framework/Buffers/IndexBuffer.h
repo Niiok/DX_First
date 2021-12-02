@@ -6,7 +6,7 @@ public:
 	~IndexBuffer();
 
 private:
-	ID3D11Buffer* buffer;
+	class ID3D11Buffer* buffer;
 
 	void* data;
 	UINT count;
@@ -16,7 +16,7 @@ private:
 
 public:
 	UINT Count() { return count; }
-	ID3D11Buffer* buffer() { return buffer; }
+	ID3D11Buffer* Buffer() { return buffer; }
 
 	void Render();
 

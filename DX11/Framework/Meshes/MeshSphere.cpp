@@ -1,7 +1,7 @@
 #include "Framework.h"
 #include "MeshSphere.h"
 
-MeshSphere::MeshSphere(Shader * shader, float radius, float height, UINT kk)
+MeshSphere::MeshSphere(Shader * shader, float radius, UINT sliceCount)
 {
 }
 
@@ -12,7 +12,7 @@ MeshSphere::~MeshSphere()
 void MeshSphere::Create()
 {
 	vector<MeshVertex> v;
-	v.push_back(MeshVertex, 0, , radius, 0, 0, 1, 0);
+	v.push_back(MeshVertex(0, radius, 0, 0, 1, 0);
 
 	float phiStep = Math::PI / stackCount;
 	float thetaStep = 2.0f * Math::PI / sliceCount;

@@ -10,14 +10,9 @@ ConstantBuffer::ConstantBuffer(void * data, UINT dataSize)
 	desc.ByteWidth = sizeof(UINT) * dataSize;
 	desc.BindFlags = D3D11_BIND_CONSTANT_BUFFER;
 	desc.Usage = D3D11_USAGE_DYNAMIC;
-	desc.CPUAccessFlags = true;
-	
-	
-	D3D11_SUBRESOURCE_DATA subResource = { 0 };
-	subResource.pSysMem = data;
+	desc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
-	Check(D3D::GetDevice()->CreateBuffer(&desc,
-		data != NULL ? &subResource : NULL, &buffer));
+	Check(D3D::GetDevice()->CreateBuffer(&desc, NULL, &buffer));
 }
 
 ConstantBuffer::~ConstantBuffer()

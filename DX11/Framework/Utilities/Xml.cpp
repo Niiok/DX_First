@@ -35,7 +35,7 @@ distribution.
 #if defined(_MSC_VER) && (_MSC_VER >= 1400 ) && (!defined WINCE)
 // Microsoft Visual Studio, version 2005 and higher. Not WinCE.
 /*int _snprintf_s(
-char *buffer,
+char *Buffer,
 size_t sizeOfBuffer,
 size_t count,
 const char *format [,
@@ -2206,7 +2206,7 @@ namespace Xml
 		TIXMLASSERT(filelength >= 0);
 
 		if (!LongFitsIntoSizeTMinusOne<>::Fits(filelength)) {
-			// Cannot handle files which won't fit in buffer together with null terminator
+			// Cannot handle files which won't fit in Buffer together with null terminator
 			SetError(XML_ERROR_FILE_READ_ERROR, 0, 0);
 			return _errorID;
 		}

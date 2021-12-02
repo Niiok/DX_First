@@ -2213,7 +2213,7 @@ namespace Xml
 			return _buffer.Size();
 		}
 		/**
-		If in print to memory mode, reset the buffer to the
+		If in print to memory mode, reset the Buffer to the
 		beginning.
 		*/
 		void ClearBuffer() {

@@ -18,6 +18,7 @@ public:
 	D3DXMATRIX View(); //{ return view; }
 	D3DXMATRIX Projection();
 	Vector3& LightDirection() { return lightDirection; }
+	void LightDirection(Vector3& dir) { lightDirection = dir; }
 
 	Color& LightAmbient() { return lightAmbient; }
 	Color& LightSpecular() { return lightSpecular; }

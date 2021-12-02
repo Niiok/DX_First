@@ -26,6 +26,18 @@ private:
 	//UINT pass;
 
 	//Matrix world;
+	
+	struct BrushDesc
+	{
+		Color Color = D3DXCOLOR(0, 1, 0, 1);
+		Vector3 Location;
+		UINT Type = 0;
+		UINT Range = 1;
+		float Padding[3];
+	} brushDesc;
+
+	ConstantBuffer* brushBuffer;
+	ID3DX11EffectConstantBuffer* sBrushBuffer;
 
 private:
 	void CreateVertexData();
@@ -39,11 +51,15 @@ public:
 	void BaseMap(wstring file);
 	float GetHeight(Vector3 position);
 	float GetPickedHeight(Vector3& position);
-	Vector3 GetPosition();
-
-
-	float GetPickedHeight();
 	Vector3 GetPickedPosition();
+
+	void RaiseHeight(Vector3& position, UINT type, UINT range);
+
+private:
+	Texture* baseMap;
+	ID3DX11EffectShaderResourceVariable* sBaseMap;
+
+	Vector2 spacing;
 
 };
 

@@ -7,7 +7,10 @@ PerFrame::PerFrame(Shader * shader)
 	buffer = new ConstantBuffer(&bufferDesc, sizeof(BufferDesc));
 	sBuffer = shader->AsConstantBuffer("CB_PerFrame");
 	
+	//lightBuffer = new ConstantBuffer(&lightBuffer, sizeof(LightBuffer));
 	lightBuffer = new ConstantBuffer(&lightBuffer, sizeof(LightDesc));
+
+
 	sLightBuffer = shader->AsConstantBuffer("CB_Light");
 }
 

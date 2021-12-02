@@ -20,7 +20,7 @@ private:
 public:
 	UINT Count() { return count; }
 	UINT Stride() { return stride; }
-	ID3D11Buffer* buffer() { return buffer; }
+	ID3D11Buffer* Buffer() { return buffer; }
 
 	void Render();
 
