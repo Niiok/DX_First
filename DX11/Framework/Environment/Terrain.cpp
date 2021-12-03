@@ -17,6 +17,9 @@ Terrain::Terrain(Shader * shader, wstring heightmap)
 
 	brushBuffer = new ConstantBuffer(&brushDesc, sizeof(BrushDesc));
 	sBrushBuffer = shader->AsConstantBuffer("CB_TerrainBrush");
+
+	lineColorBuffer = new ConstantBuffer(&lineColorDesc, sizeof(LineColorDesc));
+	sLineColorBuffer = shader->AsConstantBuffer("CB_GridLine");
 }
 
 Terrain::~Terrain()
@@ -34,10 +37,28 @@ Terrain::~Terrain()
 void Terrain::CreateVertexData()
 {
 	vector< Color > heights;
-	heightMap->ReadPixels(DXGI_FORMAT_R8G8B8A8_UNORM, &heights);
+	heightMap->ReadPixel(DXGI_FORMAT_R8G8B8A8_UNORM, &heights);
 
 	width = heightMap->GetWidth();
 	height = heightMap->GetHeight();
+
+	{
+		FILE* file = fopen("test.csv", "w");
+		for (UINT y = 0; y < height; y++)
+		{
+			for (UINT x = 0; x < width; x++)
+			{
+				UINT index = width * y + x;
+				UINT r = (UINT)(heights[index].r * 255);
+				UINT g = (UINT)(heights[index].g * 255);
+				UINT b = (UINT)(heights[index].b * 255);
+				UINT a = (UINT)(heights[index].a * 255);
+				fprintf(file, "%d, %d, %d, %d, %d, %d, %d",
+					index, x, y, (UINT)r, (UINT)g, (UINT)b, (UINT)a);
+			}
+		}
+		fclose(file);
+	}
 
 	vertexCount = width * height;
 	vertices = new TerrainVertex[vertexCount];
@@ -51,7 +72,7 @@ void Terrain::CreateVertexData()
 
 			vertices[index].Position.x = (float)x;
 			//vertices[index].Position.y = heights[index].r * 255.0f / 10.0f;
-			vertices[index].Position.y = heights[pixel].r * 255.0f / 10.0f;
+			vertices[index].Position.y = 0;//heights[pixel].r * 255.0f / 10.0f;
 			vertices[index].Position.z = (float)z;
 
 			vertices[index].Uv.x = ((float)x / (float)width) * spacing.x;
@@ -134,6 +155,12 @@ void Terrain::Update()
 
 	ImGui::ColorEdit3("Brush Color", (float*)&brushDesc.Color);
 	ImGui::InputInt("Brush Range", (int*)&brushDesc.Range);
+	
+	ImGui::Separator();
+	ImGui::ColorEdit3("Line Color", (float*)&lineColorDesc.Color);
+	ImGui::InputFloat("Thickness", &lineColorDesc.Thickness);
+	ImGui::InputFloat("Size", &lineColorDesc.Size, 1.0f);
+
 
 	if (brushDesc.Type > 0) 
 	{
@@ -163,6 +190,12 @@ void Terrain::Render()
 	{
 		brushBuffer->Apply();
 		sBrushBuffer->SetConstantBuffer(brushBuffer->Buffer());
+	}
+	
+	if (sLineColorBuffer != NULL)
+	{
+		lineColorBuffer->Apply();
+		sLineColorBuffer->SetConstantBuffer(lineColorBuffer->Buffer());
 	}
 
 	shader->DrawIndexed(0, Pass(), indexCount);

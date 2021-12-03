@@ -47,3 +47,38 @@ float3 GetBrushColor(float3 wPosition)
     return float3(0, 0, 0);
 
 }
+
+cbuffer CB_GridLine
+{
+    float4 GridLineColor;
+    uint VisibleGridLine;
+    float GridLineThickness;
+    float GridLineSize;
+};
+
+float3 GetLineColor(float3 wPosition)
+{
+    [flatten]
+    if (VisibleGridLine < 1)
+        return float3(0, 0, 0);
+
+    float2 grid = wPosition.xz / GridLineSize;
+    //
+    float2 range = abs(frac(grid - 0.5) - 0.5);
+    float2 speed = fwidth(grid);
+    
+    float2 pixel = range / speed;
+    float thick = saturate(min(pixel.x, pixel.y)) - GridLineThickness;
+    
+    return lerp(GridLineColor.rgb, float3(0, 0, 0), thick);
+    //
+    
+    //grid = frac(grid);
+    
+    //float thick = GridLineThickness / GridLineSize;
+    [flatten]
+    if (grid.x < thick || grid.y < thick)
+        return GridLineColor.rgb;
+
+    return float3(0, 0, 0);
+}

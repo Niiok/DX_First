@@ -121,7 +121,7 @@ Vector3 Transform::Forward()
 
 Vector3 Transform::Up()
 {
-	return Vector3(bufferDesc.World._21, bufferDesc.World._22, bufferDesc.World_23);
+	return Vector3(bufferDesc.World._21, bufferDesc.World._22, bufferDesc.World._23);
 }
 
 Vector3 Transform::Right()

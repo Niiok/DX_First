@@ -27,6 +27,6 @@ void IndexBuffer::Render()
 	UINT offset = 0;
 	D3D::GetDC()->IASetIndexBuffer(buffer, DXGI_FORMAT_R32_UINT, 0);
 
-	UINT offset = 0;
-	D3D::GetDC()->IASetIndexBuffers(slot, 1, &buffer, &stride, &offset);
+	//UINT offset = 0;
+	//D3D::GetDC()->IASetIndexBuffers(slot, 1, &buffer, &stride, &offset);
 }

@@ -29,7 +29,7 @@ private:
 	UINT* indices;
 	ID3D11Buffer* indexBuffer;
 
-	//Color color;
+	//Color Color;
 	ID3D11ShaderResourceView* srv;
 	Texture* texture;
 

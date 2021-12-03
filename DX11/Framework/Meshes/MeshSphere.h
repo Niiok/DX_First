@@ -4,9 +4,16 @@ class MeshSphere
 	: public Mesh
 {
 public:
-	MeshSphere(Shader* shader, float radius, UINT sliceCount);
+	MeshSphere(Shader* shader, float radius, UINT sliceCount = 10, UINT stackCount = 10);
 	virtual ~MeshSphere();
 
+protected:
 	void Create() override;
+
+private:
+	float radius;
+
+	UINT sliceCount;
+	UINT stackCount;
 };
 

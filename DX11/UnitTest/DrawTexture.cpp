@@ -33,7 +33,7 @@ void DrawTexture::Initialize()
 		subResource.pSysMem = vertices;
 
 		Check(D3D::GetDevice()->CreateBuffer(&desc, &subResource, &vertexBuffer));
-		//color = Color(0, 0, 0, 1);
+		//Color = Color(0, 0, 0, 1);
 	}
 
 
@@ -75,8 +75,8 @@ void DrawTexture::Destroy()
 
 void DrawTexture::Update()
 {
-	//ImGui::ColorEdit3("Color", (float*)&color);
-	//shader->AsVector("Color")->SetFloatVector(color);
+	//ImGui::ColorEdit3("Color", (float*)&Color);
+	//shader->AsVector("Color")->SetFloatVector(Color);
 
 	Vector3 camRot;
 	Context::Get()->GetCamera()->Rotation(&camRot);
@@ -163,9 +163,9 @@ void DrawTexture::Render()
 		Matrix world;
 		D3DXMatrixTranslation(&world, position.x, position.y, position.z);
 
-		Color color(1, 0, 0, 1);
+		Color Color(1, 0, 0, 1);
 
-		shader->AsVector("Color")->SetFloatVector(color);
+		shader->AsVector("Color")->SetFloatVector(Color);
 		shader->AsMatrix("World")->SetMatrix(world);
 		shader->Draw(0, 0, 4);
 	}
@@ -176,9 +176,9 @@ void DrawTexture::Render()
 		Matrix world2;
 		D3DXMatrixTranslation(&world2, position.x, position.y, position.z);
 
-		Color color(1, 0, 0, 1);
+		Color Color(1, 0, 0, 1);
 
-		shader->AsVector("Color")->SetFloatVector(color);
+		shader->AsVector("Color")->SetFloatVector(Color);
 		shader->AsMatrix("World")->SetMatrix(world2);
 		shader->Draw(0, 0, 4);
 	}*/

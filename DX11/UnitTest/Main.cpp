@@ -4,11 +4,12 @@
 #include "DrawVertex.h"
 #include "DrawTexture.h"
 #include "DrawTexture2.h"
+#include "DrawTerrain.h"
 
 
 void Main::Initialize()
 {
-	Push(new DrawTexture2());
+	Push(new DrawTerrain());
 }
 
 void Main::Ready()

@@ -7,7 +7,7 @@ public:
 
 public:
 	static void SaveFile(wstring file, ID3D11Texture2D* src);
-	static D3D11_TEXTURE2D_DESC ReadPixels(ID3D11Texture2D* src, DXGI_FORMAT readFormat, vector<D3DXCOLOR>* pixels);
+	//static D3D11_TEXTURE2D_DESC ReadPixels(ID3D11Texture2D* src, DXGI_FORMAT readFormat, vector<D3DXCOLOR>* pixels);
 
 public:
 	Texture(wstring file, D3DX11_IMAGE_LOAD_INFO* loadInfo = NULL);
@@ -21,7 +21,7 @@ public:
 	UINT GetWidth() { return metaData.width; }
 	UINT GetHeight() { return metaData.height; }
 
-	D3D11_TEXTURE2D_DESC ReadPixels(DXGI_FORMAT readFormat, vector<D3DXCOLOR>* pixels);
+	//D3D11_TEXTURE2D_DESC ReadPixels(DXGI_FORMAT readFormat, vector<D3DXCOLOR>* pixels);
 	void SaveFile(wstring file);
 
 	void GetImageInfo(DirectX::TexMetadata* data)
@@ -36,6 +36,13 @@ private:
 
 	DirectX::TexMetadata metaData;
 	ID3D11ShaderResourceView* view;
+
+public:
+	D3D11_TEXTURE2D_DESC ReadPixel(DXGI_FORMAT readFormat, vector<Color>* pixels);
+	static D3D11_TEXTURE2D_DESC ReadPixel(
+		ID3D11Texture2D* src,
+		DXGI_FORMAT readFormat,
+		vector<Color>* pixels);
 };
 
 struct TextureDesc

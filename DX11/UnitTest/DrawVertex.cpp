@@ -175,9 +175,9 @@ void DrawVertex::Render()
 		Matrix world;
 		D3DXMatrixTranslation(&world, position.x, position.y, position.z);
 
-		Color color(1, 0, 0, 1);
+		Color Color(1, 0, 0, 1);
 
-		shader->AsVector("Color")->SetFloatVector(color);
+		shader->AsVector("Color")->SetFloatVector(Color);
 		shader->AsMatrix("World")->SetMatrix(world);
 		shader->Draw(0, 0, 4);
 	}
@@ -188,9 +188,9 @@ void DrawVertex::Render()
 		Matrix world2;
 		D3DXMatrixTranslation(&world2, position.x, position.y, position.z);
 
-		Color color(1, 0, 0, 1);
+		Color Color(1, 0, 0, 1);
 
-		shader->AsVector("Color")->SetFloatVector(color);
+		shader->AsVector("Color")->SetFloatVector(Color);
 		shader->AsMatrix("World")->SetMatrix(world2);
 		shader->Draw(0, 0, 4);
 	}*/
