@@ -72,7 +72,7 @@ void Terrain::CreateVertexData()
 
 			vertices[index].Position.x = (float)x;
 			//vertices[index].Position.y = heights[index].r * 255.0f / 10.0f;
-			vertices[index].Position.y = 0;//heights[pixel].r * 255.0f / 10.0f;
+			vertices[index].Position.y = heights[pixel].r * 255.0f / 10.0f;
 			vertices[index].Position.z = (float)z;
 
 			vertices[index].Uv.x = ((float)x / (float)width) * spacing.x;
