@@ -62,6 +62,7 @@ public:
 	void Update();
 	void Render();
 	void BaseMap(wstring file);
+	void LayerMap(wstring file, wstring alpha);
 	float GetHeight(Vector3 position);
 	float GetPickedHeight(Vector3& position);
 	Vector3 GetPickedPosition();
@@ -71,6 +72,12 @@ public:
 private:
 	Texture* baseMap;
 	ID3DX11EffectShaderResourceVariable* sBaseMap;
+	
+	Texture* layerMap;
+	ID3DX11EffectShaderResourceVariable* sLayerMap;
+	
+	Texture* alphaMap;
+	ID3DX11EffectShaderResourceVariable* sAlphaMap;
 
 	Vector2 spacing;
 

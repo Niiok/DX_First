@@ -4,6 +4,8 @@
 Terrain::Terrain(Shader * shader, wstring heightmap)
 	: Renderer(shader)
 	, baseMap(NULL)
+	, layerMap(NULL)
+	, alphaMap(NULL)
 	, spacing(3, 3)
 {
 	this->heightMap = new Texture(heightmap);
@@ -12,6 +14,8 @@ Terrain::Terrain(Shader * shader, wstring heightmap)
 	CreateNormalData();
 	CreateBuffer();
 	sBaseMap = shader->AsSRV("BaseMap");
+	sLayerMap = shader->AsSRV("LayerMap");
+	sAlphaMap = shader->AsSRV("AlphaMap");
 
 	//D3DXMatrixIdentity(&world);
 
@@ -75,8 +79,8 @@ void Terrain::CreateVertexData()
 			vertices[index].Position.y = heights[pixel].r * 255.0f / 10.0f;
 			vertices[index].Position.z = (float)z;
 
-			vertices[index].Uv.x = ((float)x / (float)width) * spacing.x;
-			vertices[index].Uv.y = ((float)(height - 1 - z) / (float)height) * spacing.y;
+			vertices[index].Uv.x = ((float)x / (float)width) /** spacing.x*/;
+			vertices[index].Uv.y = ((float)(height - 1 - z) / (float)height) /** spacing.y*/;
 		}
 	}
 }
@@ -207,6 +211,19 @@ void Terrain::BaseMap(wstring file)
 
 	baseMap = new Texture(file);
 	sBaseMap->SetResource(baseMap->SRV());
+}
+
+void Terrain::LayerMap(wstring layer, wstring alpha)
+{
+	SafeDelete(layerMap);
+	SafeDelete(alphaMap);
+
+	layerMap = new Texture(layer);
+	sLayerMap->SetResource(layerMap->SRV());
+
+	alphaMap = new Texture(alpha);
+	sAlphaMap->SetResource(alphaMap->SRV());
+	
 }
 
 float Terrain::GetHeight(Vector3 position)

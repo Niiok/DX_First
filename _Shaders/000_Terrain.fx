@@ -1,3 +1,9 @@
+
+
+Texture2D BaseMap;
+Texture2D LayerMap;
+Texture2D AlphaMap;
+
 	struct BrushDesc
 {
     float4 Color;
@@ -81,4 +87,12 @@ float3 GetLineColor(float3 wPosition)
         return GridLineColor.rgb;
 
     return float3(0, 0, 0);
+}
+
+float4 GetTerrainColor(float2 uv)
+{
+    float4 base = BaseMap.Sample(LinearSampler, uv);
+    float4 layer = LayerMap.Sample(LinearSampler, uv);
+    float4 alpha = AlphaMap.Sample(LinearSampler, uv).r;
+    return lerp(base, layer, alpha);
 }
