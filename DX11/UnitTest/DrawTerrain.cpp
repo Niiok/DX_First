@@ -4,7 +4,7 @@
 #include "Environment/Terrain.h"
 
 
-void DrawTerrain::Initialize()
+void Export::Initialize()
 {
 	((FreeCam*)Context::Get()->GetCamera())->Speed(60, 10);
 
@@ -16,16 +16,16 @@ void DrawTerrain::Initialize()
 	terrain = new Terrain(shader, L"HeightMap/HeightMapTest.png");
 	terrain->BaseMap(L"Terrain/Dirt.png");
 
-	terrain->LayerMap(L"HiehgtMap/AlphaMapTest.png");
+	terrain->LayerMap(L"Terrain/Grass (Lawn).png", L"HeightMap/AlphaMap256");
 }
 
-void DrawTerrain::Destroy()
+void Export::Destroy()
 {
 	SafeDelete(shader);
 	SafeDelete(terrain);
 }
 
-void DrawTerrain::Update()
+void Export::Update()
 {
 	static Vector3 direction(-1, -1, 1);
 	ImGui::SliderFloat("Light Direction", (float*)&direction, -1, 1);
@@ -53,7 +53,7 @@ void DrawTerrain::Update()
 	terrain->Update();
 }
 
-void DrawTerrain::Render()
+void Export::Render()
 {
 	//Vector3 position = terrain->GetPickedPosition();
 	//string text = "("

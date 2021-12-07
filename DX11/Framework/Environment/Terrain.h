@@ -62,7 +62,7 @@ public:
 	void Update();
 	void Render();
 	void BaseMap(wstring file);
-	void LayerMap(wstring file, wstring alpha);
+	void LayerMap(wstring layer, wstring alpha);
 	float GetHeight(Vector3 position);
 	float GetPickedHeight(Vector3& position);
 	Vector3 GetPickedPosition();

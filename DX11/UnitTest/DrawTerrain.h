@@ -2,7 +2,7 @@
 
 #include "Systems//IExecute.h"
 
-class DrawTerrain : public IExecute
+class Export : public IExecute
 {
 	virtual void Initialize() override;
 	virtual void Ready() override {};

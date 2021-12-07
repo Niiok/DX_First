@@ -9,7 +9,7 @@
 
 void Main::Initialize()
 {
-	Push(new DrawTerrain());
+	Push(new Export());
 }
 
 void Main::Ready()

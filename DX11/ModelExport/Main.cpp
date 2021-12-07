@@ -1,23 +1,16 @@
 #include "stdafx.h"
 #include "Main.h"
 #include "Systems/Window.h"
-#include "DrawVertex.h"
-#include "DrawTexture.h"
-#include "DrawTexture2.h"
-#include "DrawTerrain.h"
+#include "Export.h"
 
 
 void Main::Initialize()
 {
-	Push(new DrawTerrain());
+	Push(new Export());
 }
 
 void Main::Ready()
 {
-	/*for (IExecute* exe : executes)
-	{
-		exe->Ready();
-	}*/
 }
 
 void Main::Destroy()

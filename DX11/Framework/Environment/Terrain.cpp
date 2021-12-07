@@ -219,9 +219,9 @@ void Terrain::LayerMap(wstring layer, wstring alpha)
 	SafeDelete(alphaMap);
 
 	layerMap = new Texture(layer);
-	sLayerMap->SetResource(layerMap->SRV());
-
 	alphaMap = new Texture(alpha);
+
+	sLayerMap->SetResource(layerMap->SRV());
 	sAlphaMap->SetResource(alphaMap->SRV());
 	
 }
