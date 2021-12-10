@@ -1,17 +1,28 @@
 #include "Framework.h"
 #include "Export.h"
 #include "Assimp/Loader.h"
-#include "Viewer/FreeCam.h"
-#include "Environment/Terrain.h"
 
 
 void Export::Initialize()
 {
-	Loader* loader = new Loader();
-	loader->ReadFile(L"Tank/tank.fbx");
+	Tank();
+	Tower();
+}
 
-	int breakpoint = 999;
+void Export::Tank()
+{
+	Loader* loader = new Loader();
+	loader->ReadFile(L"Tank/Tank.fbx");
+	loader->ExportMaterial(L"Tank/Tank");
 
 	SafeDelete(loader);
+}
 
+void Export::Tower()
+{
+	Loader* loader = new Loader();
+	loader->ReadFile(L"Tower/Tower.fbx");
+	loader->ExportMaterial(L"Tower/Tower");
+
+	SafeDelete(loader);
 }

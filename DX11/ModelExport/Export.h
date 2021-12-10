@@ -14,5 +14,6 @@ class Export : public IExecute
 	virtual void ResizeScreen() override {};
 
 private:
-
+	void Tank();
+	void Tower();
 };
