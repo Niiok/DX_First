@@ -14,6 +14,7 @@ void Export::Tank()
 	Loader* loader = new Loader();
 	loader->ReadFile(L"Tank/Tank.fbx");
 	loader->ExportMaterial(L"Tank/Tank");
+	loader->ExportMesh(L"Tank/Tank");
 
 	SafeDelete(loader);
 }

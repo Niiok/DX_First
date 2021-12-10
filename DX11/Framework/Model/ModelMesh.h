@@ -114,5 +114,20 @@ private:
 	UINT indexCount;
 	UINT* indices;
 
+public:
+	void Pass(UINT pass);
+	void SetShader(Shader* shader);
+
+	void Update();
+	void Render();
+
+	wstring Name() { return name; }
+
+	int BoneIndex() { return boneIndex; }
+	class ModeBone* Bone() { return bone; }
+
+	void Transform(Matrix* transform);
+	void SetTransform(Transform* transform);
+
 };
 

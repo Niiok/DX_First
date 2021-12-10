@@ -29,7 +29,9 @@
     <ClInclude Include="Meshes\MeshQuad.h" />
     <ClInclude Include="Meshes\MeshSphere.h" />
     <ClInclude Include="Model\Model.h" />
+    <ClInclude Include="Model\ModelMesh.h" />
     <ClInclude Include="Renders\Context.h" />
+    <ClInclude Include="Renders\Material.h" />
     <ClInclude Include="Renders\PerFrame.h" />
     <ClInclude Include="Renders\Renderer.h" />
     <ClInclude Include="Renders\Shader.h" />
@@ -65,7 +67,9 @@
     <ClCompile Include="Meshes\MeshQuad.cpp" />
     <ClCompile Include="Meshes\MeshSphere.cpp" />
     <ClCompile Include="Model\Model.cpp" />
+    <ClCompile Include="Model\ModelMesh.cpp" />
     <ClCompile Include="Renders\Context.cpp" />
+    <ClCompile Include="Renders\Material.cpp" />
     <ClCompile Include="Renders\PerFrame.cpp" />
     <ClCompile Include="Renders\Renderer.cpp" />
     <ClCompile Include="Renders\Shader.cpp" />

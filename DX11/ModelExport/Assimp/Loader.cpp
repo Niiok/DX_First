@@ -340,7 +340,11 @@ void Loader::WriteMeshData(wstring savePath, bool bOverwrite)
 			
 			w->UInt(part->StartIndex);
 			w->UInt(part->IndexCount);
+
+
 		}
+
+
 	}
 }
 

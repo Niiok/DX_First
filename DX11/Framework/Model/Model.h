@@ -18,5 +18,11 @@ private:
 
 public:
 	UINT MaterialCount() { return materials.size(); }
+	vector<Material*>& Materials() { return materials; }
+	Material* MaterialByIndex(UINT index) { return materials[index]; }
+	Material* MaterialByName(wstring name);
+
+	void ReadMaterial(wstring file);
+	void ReadMesh(wstring file);
 };
 
