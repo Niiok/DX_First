@@ -6,6 +6,7 @@
     <ClCompile Include="Assimp\Loader.cpp">
       <Filter>Assimp</Filter>
     </ClCompile>
+    <ClCompile Include="RenderModel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h" />
@@ -17,6 +18,7 @@
     <ClInclude Include="Assimp\Type.h">
       <Filter>Assimp</Filter>
     </ClInclude>
+    <ClInclude Include="RenderModel.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assimp">

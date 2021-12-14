@@ -1,6 +1,6 @@
 #include "000_Header.fx"
 
-texture2D BaseMap;
+Texture2D BaseMap;
 
 struct VertexOutput
 {

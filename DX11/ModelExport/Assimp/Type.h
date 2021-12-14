@@ -38,7 +38,7 @@ struct AsMeshPart
 struct AsMesh
 {
 	string Name;
-	int BondIndex;
+	int BoneIndex;
 
 	aiMesh* Mesh;
 

@@ -92,5 +92,6 @@ typedef D3DXQUATERNION Quaternion;
 #include "Utilities/Path.h"
 
 #include "Model/Model.h"
+#include "Model/ModelRender.h"
 
 #include "Environment/Terrain.h"

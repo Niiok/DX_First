@@ -48,7 +48,7 @@ private:
 private:
 	struct BoneDesc
 	{
-		Matrix Transform[MAX_MODEL_TRANSFORM];
+		Matrix Transforms[MAX_MODEL_TRANSFORM];
 		UINT Index;
 		float padding[3];
 	} boneDesc;
@@ -80,9 +80,11 @@ public:
 
 private:
 	void Tranform(Matrix* transform);
-	void SetTransformTranform(Transform* transform);
+	void SetTransform(Transform* transform);
 
 	void Update();
+	void Render();
+	void Binding(Model* model);
 
 };
 

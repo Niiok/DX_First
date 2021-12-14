@@ -2,6 +2,8 @@
 #include "Terrain.h"
 
 Terrain::Terrain(Shader * shader, wstring heightmap)
+	//: shader(shader)
+	//, pass(1)
 	: Renderer(shader)
 	, baseMap(NULL)
 	, layerMap(NULL)

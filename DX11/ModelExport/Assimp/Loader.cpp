@@ -248,7 +248,7 @@ void Loader::ReadMeshData(aiNode * node, int bone)
 
 	AsMesh* asMesh = new AsMesh();
 	asMesh->Name = node->mName.C_Str();
-	asMesh->BondIndex = bone;
+	asMesh->BoneIndex = bone;
 
 	for (UINT i = 0; i < node->mNumMeshes; i++)
 	{
@@ -319,14 +319,14 @@ void Loader::WriteMeshData(wstring savePath, bool bOverwrite)
 	for (AsMesh* meshData : meshes)
 	{
 		w->String(meshData->Name);
-		w->Int(meshData->BondIndex);
+		w->Int(meshData->BoneIndex);
 		w->UInt(meshData->Vertices.size());
 
 		w->Byte(&meshData->Vertices[0],
 			sizeof(Model::ModelVertex) * meshData->Vertices.size());
 
 		w->UInt(meshData->Indices.size());
-		w->Byte(&meshData->BondIndex[0],
+		w->Byte(&meshData->BoneIndex[0],
 			sizeof(UINT) * meshData->Indices.size());
 
 		w->UInt(meshData->MeshParts.size());

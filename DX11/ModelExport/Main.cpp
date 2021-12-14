@@ -2,11 +2,12 @@
 #include "Main.h"
 #include "Systems/Window.h"
 #include "Export.h"
-
+#include "RenderModel.h"
 
 void Main::Initialize()
 {
 	Push(new Export());
+	Push(new RenderModel());
 }
 
 void Main::Ready()
