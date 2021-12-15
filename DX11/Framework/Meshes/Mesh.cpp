@@ -2,24 +2,14 @@
 #include "Mesh.h"
 
 Mesh::Mesh(Shader * shader) 
-	: indexBuffer(NULL)
-	, color(0,0,0,1)
+	: Renderer(shader)
 {
-	D3DXMatrixIdentity(&world);
-
-	sWorld = shader->AsMatrix("World");
-	sView = shader->AsMatrix("View");
-	sProjection = shader->AsMatrix("Projection");
-	sColor = shader->AsVector("Color");
 }
 
 Mesh::~Mesh()
 {
 	SafeDeleteArray(vertices);
 	SafeDeleteArray(indices);
-
-	SafeDelete(vertexBuffer);
-	SafeDelete(indexBuffer);
 }
 
 void Mesh::Render()
@@ -27,13 +17,16 @@ void Mesh::Render()
 	if (vertexBuffer == NULL && indexBuffer == NULL)
 	{
 		Create();
-		CreateBuffer();
+		vertexBuffer = new VertexBuffer(vertices, vertexCount, sizeof(MeshVertex));
+		indexBuffer = new IndexBuffer(indices, indexCount);
 	}
 
 	UINT stride = sizeof(MeshVertex);
 	UINT offset = 0;
 
-	//D3D::GetDC()
+	D3D::GetDC()->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	Renderer::Render();
+
 
 }
 

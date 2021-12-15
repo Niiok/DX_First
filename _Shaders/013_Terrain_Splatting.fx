@@ -38,6 +38,7 @@ float4 PS(VertexOutput input) : SV_Target0
     float4 diffuse = GetTerrainColor(input.Uv);
     float3 normal = normalize(input.Normal);
     float NdotL = saturate(dot(normal, -GlobalLight.Direction));
+    //float3 gridColor = GetLineColor(input.wPosition.xyz);
     
     //return diffuse * NdotL + float4(input.Color, 1);
     return diffuse * NdotL;

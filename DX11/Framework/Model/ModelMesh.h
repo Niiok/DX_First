@@ -126,10 +126,10 @@ public:
 	wstring Name() { return name; }
 
 	int BoneIndex() { return boneIndex; }
-	class ModeBone* Bone() { return bone; }
+	class ModelBone* Bone() { return bone; }
 
 	void Transform(Matrix* transform);
-	void SetTransform(Transform* transform);
+	void SetTransform(::Transform* transform);
 
 };
 

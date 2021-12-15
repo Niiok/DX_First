@@ -8,7 +8,7 @@
 #include "000_Light.fx"
 #include "000_Terrain.fx"
 
-Texture2D BaseMap;
+//Texture2D BaseMap;
 
 struct VertexOutput
 {

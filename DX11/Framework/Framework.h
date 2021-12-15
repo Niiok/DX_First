@@ -84,6 +84,7 @@ typedef D3DXQUATERNION Quaternion;
 #include "Renders/PerFrame.h"
 #include "Renders/Transform.h"
 #include "Renders/Renderer.h"
+#include "Renders/Material.h"
 
 
 
@@ -93,5 +94,12 @@ typedef D3DXQUATERNION Quaternion;
 
 #include "Model/Model.h"
 #include "Model/ModelRender.h"
+
+#include "Meshes/Mesh.h"
+#include "Meshes/MeshQuad.h"
+#include "Meshes/MeshGrid.h"
+#include "Meshes/MeshCube.h"
+#include "Meshes/MeshCylinder.h"
+#include "Meshes/MeshSphere.h"
 
 #include "Environment/Terrain.h"

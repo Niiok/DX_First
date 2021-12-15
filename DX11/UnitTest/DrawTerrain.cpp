@@ -9,11 +9,13 @@ void DrawTerrain::Initialize()
 	((FreeCam*)Context::Get()->GetCamera())->Speed(60, 10);
 
 	//shader = new Shader(L"009_Terrain.fx");
+	//shader = new Shader(L"010_Terrain.fx");
+	//shader = new Shader(L"011_Terrain.fx");
 	//shader = new Shader(L"012_TerrainGridLine.fx");
 	shader = new Shader(L"013_Terrain_Splatting.fx");
 
-	//terrain = new Terrain(shader, L"HeightMap/HeightMapTest.png");
 	terrain = new Terrain(shader, L"HeightMap/HeightMapTest.png");
+	//terrain = new Terrain(shader, L"Test2.png");
 	terrain->BaseMap(L"Terrain/Dirt.png");
 
 	terrain->LayerMap(L"Terrain/Grass (Lawn).png", L"HeightMap/AlphaMap256");

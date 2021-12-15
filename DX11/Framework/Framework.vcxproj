@@ -25,7 +25,9 @@
     <ClInclude Include="Environment\Terrain.h" />
     <ClInclude Include="Framework.h" />
     <ClInclude Include="Meshes\Mesh.h" />
+    <ClInclude Include="Meshes\MeshCube.h" />
     <ClInclude Include="Meshes\MeshCylinder.h" />
+    <ClInclude Include="Meshes\MeshGrid.h" />
     <ClInclude Include="Meshes\MeshQuad.h" />
     <ClInclude Include="Meshes\MeshSphere.h" />
     <ClInclude Include="Model\Model.h" />
@@ -64,7 +66,9 @@
     <ClCompile Include="Buffers\VertexBuffer.cpp" />
     <ClCompile Include="Environment\Terrain.cpp" />
     <ClCompile Include="Meshes\Mesh.cpp" />
+    <ClCompile Include="Meshes\MeshCube.cpp" />
     <ClCompile Include="Meshes\MeshCylinder.cpp" />
+    <ClCompile Include="Meshes\MeshGrid.cpp" />
     <ClCompile Include="Meshes\MeshQuad.cpp" />
     <ClCompile Include="Meshes\MeshSphere.cpp" />
     <ClCompile Include="Model\Model.cpp" />

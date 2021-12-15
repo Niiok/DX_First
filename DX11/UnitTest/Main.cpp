@@ -5,11 +5,12 @@
 #include "DrawTexture.h"
 #include "DrawTexture2.h"
 #include "DrawTerrain.h"
+#include "MeshDemo/MeshDemo.h"
 
 
 void Main::Initialize()
 {
-	Push(new Export());
+	Push(new MeshDemo);
 }
 
 void Main::Ready()
