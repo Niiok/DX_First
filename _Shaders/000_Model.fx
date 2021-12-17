@@ -18,3 +18,8 @@ void SetModelWorld(inout matrix world, VertexModel input)
 {
     world = mul(BoneTransforms[BoneIndex], world);
 }
+
+MeshOutput VS_Model(VertexModel input)
+{
+    Mesh
+}

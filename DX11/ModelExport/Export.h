@@ -16,4 +16,5 @@ class Export : public IExecute
 private:
 	void Tank();
 	void Tower();
+	void Eclipse();
 };

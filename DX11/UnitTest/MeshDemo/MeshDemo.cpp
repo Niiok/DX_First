@@ -9,7 +9,8 @@ void MeshDemo::Initialize()
 	Context::Get()->GetCamera()->Position(0, 60, -80);
 	Context::Get()->GetCamera()->RotationDegree(33, 0, 0);
 
-	shader = new Shader(L"015_Mesh.fx");
+	//shader = new Shader(L"015_Mesh.fx");
+	shader = new Shader(L"016_Mesh.fx");
 
 	// mesh
 	floor = new Material(shader);
@@ -51,6 +52,17 @@ void MeshDemo::Initialize()
 		sphere[i * 2 + 1]->GetTransform()->Position(30, 15.0f, -15.0f + (float)i * 15.0f);
 		sphere[i * 2 + 1]->GetTransform()->Scale(5, 5, 5);
 	}
+
+	// load model
+	{
+		model = new Model();
+		model->ReadMaterial(L"Eclipse/Eclipse");
+		mpdel->ReadMesh(L"Eclipse/Eclipse");
+
+		modelRender = new ModelRender(shader, model);
+		modelRender->GetTransform()->Position(0, 0, 0);
+		modelRender->GetTransform()->SCale(1, 1, 1);
+	}
 }
 
 
@@ -64,20 +76,34 @@ void MeshDemo::Update()
 
 	cube->Update();
 	grid->Update();
+
+	modelRender->Update();
 }
 
 void MeshDemo::Render()
 {
 	wall->Render();
 	for (UINT i = 0; i < 10; i++)
+	{
+		sphere[i]->Pass(0);
 		sphere[i]->Render();
-	
+	}
+
 	brick->Render();
 	for (UINT i = 0; i < 10; i++)
+	{
+		cylinder[i]->Pass(0);
 		cylinder[i]->Render();
+	}
 
 	stone->Render();
+	cube->Pass(0);
 	cube->Render();
 
+	floor->Render();
+	grid->Pass(0);
+	grid->Render();
 
+	modelRender->Pass(1);
+	modelRender->Render();
 }

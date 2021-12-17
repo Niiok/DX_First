@@ -27,3 +27,13 @@ void Export::Tower()
 
 	SafeDelete(loader);
 }
+
+void Export::Eclipse()
+{
+	Loader* loader = new Loader();
+	loader->ReadFile(L"Eclipse/Eclipse.fbx");
+	loader->ExportMaterial(L"Eclipse/Eclipse");
+	loader->ExportMesh(L"Eclipse/Eclips");
+
+	SafeDelete(loader);
+}
