@@ -1,10 +1,19 @@
 #include "Framework.h"
-#include "MeshDemo.h"
-#include "Viewer/FreeCam.h"
-#include "Environment/Terrain.h"
+#include "Systems//IExecute.h"
+#include "BillboardDemo.h"
+#include "Environment/Billboard.h"
 
 
-void MeshDemo::Initialize()
+BillboardDemo::BillboardDemo()
+{
+}
+
+BillboardDemo::~BillboardDemo()
+{
+}
+
+
+void BillboardDemo::Initialize()
 {
 	Context::Get()->GetCamera()->Position(0, 60, -80);
 	Context::Get()->GetCamera()->RotationDegree(33, 0, 0);
@@ -12,16 +21,24 @@ void MeshDemo::Initialize()
 	//shader = new Shader(L"015_Mesh.fx");
 	shader = new Shader(L"016_Mesh.fx");
 
+	{
+		billboard = new Billboard(shader, L"Terrain/Tree.png");
+		billboard->Position(15, 5, 0);
+		billboard->Scale(10, 10, 10);
+	}
+
+
+
 	// mesh
 	floor = new Material(shader);
 	floor->DiffuseMap("Floor.png");
 
 	stone = new Material(shader);
 	stone->DiffuseMap("Stone.png");
-	
+
 	brick = new Material(shader);
 	brick->DiffuseMap("Brick.png");
-	
+
 	wall = new Material(shader);
 	wall->DiffuseMap("Wall.png");
 
@@ -39,7 +56,7 @@ void MeshDemo::Initialize()
 		cylinder[i * 2] = new MeshCylinder(shader, 0.5f, 3.0f, 20, 20);
 		cylinder[i * 2]->GetTransform()->Position(-30, 6.0f, -15.0f + (float)i* 15.0f);
 		cylinder[i * 2]->GetTransform()->Scale(5, 5, 5);
-		
+
 		cylinder[i * 2 + 1] = new MeshCylinder(shader, 0.5f, 3.0f, 20, 20);
 		cylinder[i * 2 + 1]->GetTransform()->Position(30, 6.0f, -15.0f + (float)i* 15.0f);
 		cylinder[i * 2 + 1]->GetTransform()->Scale(5, 5, 5);
@@ -47,7 +64,7 @@ void MeshDemo::Initialize()
 		sphere[i * 2] = new MeshSphere(shader, 0.5f, 20, 20);
 		sphere[i * 2]->GetTransform()->Position(-30, 15.0f, -15.0f + (float)i * 15.0f);
 		sphere[i * 2]->GetTransform()->Scale(5, 5, 5);
-		
+
 		sphere[i * 2 + 1] = new MeshSphere(shader, 0.5f, 20, 20);
 		sphere[i * 2 + 1]->GetTransform()->Position(30, 15.0f, -15.0f + (float)i * 15.0f);
 		sphere[i * 2 + 1]->GetTransform()->Scale(5, 5, 5);
@@ -66,7 +83,7 @@ void MeshDemo::Initialize()
 }
 
 
-void MeshDemo::Update()
+void BillboardDemo::Update()
 {
 	for (UINT i = 0; i < 10; i++)
 	{
@@ -78,9 +95,11 @@ void MeshDemo::Update()
 	grid->Update();
 
 	modelRender->Update();
+
+	billboard->Update();
 }
 
-void MeshDemo::Render()
+void BillboardDemo::Render()
 {
 	wall->Render();
 	for (UINT i = 0; i < 10; i++)
@@ -106,4 +125,7 @@ void MeshDemo::Render()
 
 	modelRender->Pass(1);
 	modelRender->Render();
+
+	billboard->Pass(2);
+	billboard->Render();
 }

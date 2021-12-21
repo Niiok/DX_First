@@ -13,7 +13,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="MeshDemo">
+    <Filter Include="Demo">
       <UniqueIdentifier>{e46eb29f-7093-4c9a-b6be-234c2f1d78ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -37,7 +37,10 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="MeshDemo\MeshDemo.cpp">
-      <Filter>MeshDemo</Filter>
+      <Filter>Demo</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshDemo\BillboardDemo.cpp">
+      <Filter>Demo</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,7 +66,10 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="MeshDemo\MeshDemo.h">
-      <Filter>MeshDemo</Filter>
+      <Filter>Demo</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshDemo\BillboardDemo.h">
+      <Filter>Demo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

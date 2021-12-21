@@ -143,6 +143,9 @@
     <ClInclude Include="Meshes\MeshGrid.h">
       <Filter>Meshes</Filter>
     </ClInclude>
+    <ClInclude Include="Environment\Billboard.h">
+      <Filter>Environment</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Renders\Context.cpp">
@@ -253,6 +256,9 @@
     </ClCompile>
     <ClCompile Include="Meshes\MeshGrid.cpp">
       <Filter>Meshes</Filter>
+    </ClCompile>
+    <ClCompile Include="Environment\Billboard.cpp">
+      <Filter>Environment</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
