@@ -2,6 +2,7 @@
 #include "Systems//IExecute.h"
 #include "BillboardDemo.h"
 #include "Environment/Billboard.h"
+#include "Environment/Sky.h"
 
 
 BillboardDemo::BillboardDemo()
@@ -27,6 +28,8 @@ void BillboardDemo::Initialize()
 		billboard->Scale(10, 10, 10);
 	}
 
+	//sky = new Sky();
+	sky = new Sky(L"Emvironment/SnowCube1024.dds");
 
 
 	// mesh
@@ -85,6 +88,8 @@ void BillboardDemo::Initialize()
 
 void BillboardDemo::Update()
 {
+	sky->Update();
+
 	for (UINT i = 0; i < 10; i++)
 	{
 		cylinder[i]->Update();
@@ -101,6 +106,8 @@ void BillboardDemo::Update()
 
 void BillboardDemo::Render()
 {
+	sky->Render();
+
 	wall->Render();
 	for (UINT i = 0; i < 10; i++)
 	{

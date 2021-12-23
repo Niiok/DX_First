@@ -18,6 +18,7 @@ cbuffer CB_World
 Texture2D DiffuseMap;
 Texture2D SpeculatMap;
 Texture2D NormalMap;
+TextureCube SkyCubeMap;
 
 
 SamplerState Sampler;
@@ -142,7 +143,7 @@ struct VertexMesh
 struct MeshOutput
 {
     float4 Position : SV_Position0;
-    //float2 Uv : Uv0;
+    float2 Uv : Uv0;
     float3 Normal : NORMAL0;
 };
 
