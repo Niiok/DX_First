@@ -133,6 +133,12 @@ float3 WorldNormal(float3 normal)
     return mul(normal, (float3x3) World);
 }
 
+
+float3 ViewPosition()
+{
+    return ViewInverse._41_42_43;
+}
+
 struct VertexMesh
 {
     float4 Position : POSITION0;
@@ -143,6 +149,8 @@ struct VertexMesh
 struct MeshOutput
 {
     float4 Position : SV_Position0;
+    float3 oPosition : Position2;
+    float3 wPosition : Position3;
     float2 Uv : Uv0;
     float3 Normal : NORMAL0;
 };

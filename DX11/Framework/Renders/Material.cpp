@@ -26,7 +26,7 @@ void Material::Initialize()
 	diffuseMap = NULL;
 	specularMap = NULL;
 	normalMap = NULL;
-	buffer = new ConstantBuffer(&colorDesc, sizeof(ColorDesc))
+	buffer = new ConstantBuffer(&colorDesc, sizeof(ColorDesc));
 }
 
 void Material::SetShader(Shader * shader)
@@ -92,7 +92,7 @@ void Material::SpecularMap(wstring file)
 
 void Material::NormalMap(string file)
 {
-	NormalMap(String::ToWString(file);
+	NormalMap(String::ToWString(file));
 }
 
 void Material::NormalMap(wstring file)

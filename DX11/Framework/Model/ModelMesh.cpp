@@ -59,7 +59,7 @@ void ModelMeshPart::Update()
 void ModelMeshPart::Render()
 {
 	boneBuffer->Apply();
-	sBoneBuffer->SetConstantBuffer(boneBuffer->Buffer();
+	sBoneBuffer->SetConstantBuffer(boneBuffer->Buffer());
 	perFrame->Render();
 	transform->Render();
 	material->Render();
@@ -145,7 +145,7 @@ void ModelMesh::Transform(Matrix * transform)
 		part->Tranform(transform);
 }
 
-void ModelMesh::SetTransform(Transform* transform)
+void ModelMesh::SetTransform(::Transform* transform)
 {
 	for (ModelMeshPart* part : meshParts)
 		part->SetTransform(transform);

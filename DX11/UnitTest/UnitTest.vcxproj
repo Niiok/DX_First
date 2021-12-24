@@ -27,6 +27,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MeshDemo\BillboardDemo.cpp" />
     <ClCompile Include="MeshDemo\MeshDemo.cpp" />
+    <ClCompile Include="MeshDemo\WeatherDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DrawMesh.h" />
@@ -37,6 +38,7 @@
     <ClInclude Include="Main.h" />
     <ClInclude Include="MeshDemo\BillboardDemo.h" />
     <ClInclude Include="MeshDemo\MeshDemo.h" />
+    <ClInclude Include="MeshDemo\WeatherDemo.h" />
     <ClInclude Include="stdafx.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -2,7 +2,7 @@
 class Rain : public Renderer
 {
 public:
-	Rain(Vector3& extent, UINT count);
+	Rain(Vector3 extent, UINT count);
 	~Rain();
 
 	void Update();
